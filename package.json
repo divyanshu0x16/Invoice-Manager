@@ -1,0 +1,23 @@
+{
+  "name": "invoice-tracker",
+  "version": "1.0.0",
+  "description": "Invoice Tracker built using MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanshu0x16/Invoice-Tracker.git"
+  },
+  "author": "divyanshu0x16",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divyanshu0x16/Invoice-Tracker/issues"
+  },
+  "homepage": "https://github.com/divyanshu0x16/Invoice-Tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
