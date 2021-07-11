@@ -23,12 +23,15 @@ router.post('/', async (request, response) => {
   const user = await User.findById(decodedToken.id);
 
   invoice.user = user;
-  const savedInvoice = await invoice.save();
 
-  user.invoices = user.invoices.concat(savedInvoice._id);
-  await user.save();
-
-  response.status(201).json(savedInvoice);
+  try {
+    const savedInvoice = await invoice.save();
+    user.invoices = user.invoices.concat(savedInvoice._id);
+    await user.save();
+    return response.status(201).json(savedInvoice);
+  } catch (error) {
+    return response.status(400).json(error.message);
+  }
 });
 
 router.put('/:id', async (request, response) => {
@@ -67,6 +70,5 @@ router.delete('/:id', async (request, response) => {
   await user.save();
   response.status(204).end();
 });
-
 
 module.exports = router;

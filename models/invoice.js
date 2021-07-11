@@ -18,7 +18,7 @@ const invoiceSchema = mongoose.Schema({
     terms: String,
     description: String,
   },
-  items: [{ name: String, quantity: String, price: Number }],
+  items: [{ name: String, quantity: Number, price: Number }],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
