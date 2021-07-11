@@ -33,6 +33,6 @@ app.use(middleware.tokenExtractor);
 
 app.use('/api/invoices', invoiceRouter);
 app.use('/api/login', loginRouter);
-app.use('/api/singup', usersRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
