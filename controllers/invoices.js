@@ -4,10 +4,19 @@ const Invoice = require('../models/invoice');
 const User = require('../models/user');
 
 router.get('/', async (request, response) => {
-  const invoices = await Invoice.find({}).populate('user', {
-    username: 1,
-    name: 1,
-  });
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+
+  if (!request.token || !decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' });
+  }
+
+  const invoices = await Invoice.find({ user: decodedToken.id }).populate(
+    'user',
+    {
+      username: 1,
+      name: 1,
+    }
+  );
   response.json(invoices);
 });
 
