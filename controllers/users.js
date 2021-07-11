@@ -26,9 +26,12 @@ router.post('/', async (request, response) => {
     passwordHash,
   });
 
-  const savedUser = await user.save();
-
-  response.json(savedUser);
+  try {
+    const savedUser = await user.save();
+    return response.json(savedUser);
+  } catch (error) {
+    return response.status(400).json(error.message);
+  }
 });
 
 module.exports = router;

@@ -7,6 +7,7 @@ const middleware = require('./utils/middleware');
 
 const loginRouter = require('./controllers/login');
 const invoiceRouter = require('./controllers/invoices')
+const usersRouter = require('./controllers/users')
 
 const app = express();
 
@@ -30,7 +31,8 @@ app.use(cors());
 app.use(express.json());
 app.use(middleware.tokenExtractor);
 
-app.use('/api/invoices', invoicesRouter);
+app.use('/api/invoices', invoiceRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
