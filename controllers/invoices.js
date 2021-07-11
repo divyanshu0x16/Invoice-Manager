@@ -24,14 +24,10 @@ router.post('/', async (request, response) => {
 
   invoice.user = user;
 
-  try {
-    const savedInvoice = await invoice.save();
-    user.invoices = user.invoices.concat(savedInvoice._id);
-    await user.save();
-    return response.status(201).json(savedInvoice);
-  } catch (error) {
-    return response.status(400).json(error.message);
-  }
+  const savedInvoice = await invoice.save();
+  user.invoices = user.invoices.concat(savedInvoice._id);
+  await user.save();
+  return response.status(201).json(savedInvoice);
 });
 
 router.put('/:id', async (request, response) => {
@@ -50,6 +46,9 @@ router.put('/:id', async (request, response) => {
 
 router.delete('/:id', async (request, response) => {
   const decodedToken = jwt.verify(request.token, process.env.SECRET);
+  if (decodedToken == null) {
+    return response.status(401).json({ error: 'token missing or invalid' });
+  }
 
   if (!request.token || !decodedToken.id) {
     return response.status(401).json({ error: 'token missing or invalid' });
