@@ -1,13 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 const Dashboard = () => {
-  const user = useSelector((state) => {
-    return state;
-  });
+  const user = JSON.parse(localStorage.getItem('userDetails'));
 
-  if (Object.keys(user).length === 0 && user.constructor === Object) {
+  if (user === null) {
     return <Redirect to="/login" />;
   }
 

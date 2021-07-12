@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../reducers/userReducer';
+import loginService from '../services/login'
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-  const user = useSelector((state) => {
-    return state;
-  });
-  let history = useHistory();
+
+  const initialUser = JSON.parse(localStorage.getItem('userDetails'));
+  const [user, setUser] = useState(initialUser);
+  
+  const history = useHistory();
 
   useEffect(() => {
-    if (Object.keys(user).length !== 0) {
+    if (user !== null) {
       history.push('/');
     }
   }, [user, history]);
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     try {
       const credentials = {
         username,
         password,
       };
-      dispatch(loginUser(credentials));
+      const data = await loginService.login(credentials);
+      localStorage.setItem('userDetails', JSON.stringify(data));
       setUsername('');
       setPassword('');
+      setUser(JSON.parse(localStorage.getItem('userDetails')));
     } catch (error) {
       console.error(error);
     }
