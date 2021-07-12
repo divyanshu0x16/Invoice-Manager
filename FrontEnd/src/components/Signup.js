@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
+import signupService from '../services/signup';
+import { useHistory } from 'react-router-dom';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = (event) => {
+  const handleSignup = async (event) => {
     event.preventDefault();
+    try {
+      await signupService.signup({
+        username,
+        name,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -34,13 +45,13 @@ const Signup = () => {
         <div>
           Password
           <input
-            type="text"
+            type="password"
             value={password}
             name="Name"
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type='submit'>SignUp</button>
+        <button type="submit">SignUp</button>
       </form>
     </div>
   );
