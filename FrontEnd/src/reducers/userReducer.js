@@ -1,15 +1,17 @@
+import loginService from '../services/login';
+
 export const loginUser = (credentials) => {
-  console.log(credentials);
   return async (dispatch) => {
-    dispatch({ type: 'LOGIN' });
+    const data = await loginService.login(credentials);
+    dispatch({ type: 'LOGIN', data });
   };
 };
 
 const userReducer = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN': {
-      console.log('test');
-      return 0;
+      const userDetails = action.data;
+      return { ...state, userDetails };
     }
     default:
       return state;
