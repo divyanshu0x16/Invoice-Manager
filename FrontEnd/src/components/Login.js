@@ -9,9 +9,8 @@ const Login = () => {
   const user = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(user);
 
-  if (Object.keys(user).length !== 0 && user.constructor === Object) {
+  if (Object.keys(user).length !== 0 && user.constructor !== Object) {
     return <Redirect to="/" />;
   }
 
