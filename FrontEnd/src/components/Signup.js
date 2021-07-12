@@ -6,6 +6,7 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const handleSignup = async (event) => {
     event.preventDefault();
@@ -15,6 +16,7 @@ const Signup = () => {
         name,
         password,
       });
+      history.push("/login");
     } catch (error) {
       console.log(error);
     }
