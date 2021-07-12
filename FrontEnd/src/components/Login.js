@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import loginService from '../services/login';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../reducers/userReducer';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     try {
-    } catch (error) {
-      const user = await loginService.login({
+      const credentials = {
         username,
         password,
-      });
+      };
+      dispatch(loginUser(credentials));
+    } catch (error) {
+      console.error(error);
     }
   };
 
