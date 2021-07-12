@@ -15,6 +15,8 @@ const Login = () => {
         password,
       };
       dispatch(loginUser(credentials));
+      setUsername('');
+      setPassword('');
     } catch (error) {
       console.error(error);
     }

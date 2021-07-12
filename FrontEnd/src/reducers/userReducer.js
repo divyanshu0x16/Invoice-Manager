@@ -11,7 +11,7 @@ const userReducer = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN': {
       const userDetails = action.data;
-      return { ...state, userDetails };
+      return { ...state, ...userDetails };
     }
     default:
       return state;
