@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../reducers/userReducer';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const user = useSelector((state) => state);
   const dispatch = useDispatch();
+  const history = useHistory();
+  console.log(user);
+
+  if (Object.keys(user).length !== 0 && user.constructor === Object) {
+    return <Redirect to="/" />;
+  }
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -17,6 +25,7 @@ const Login = () => {
       dispatch(loginUser(credentials));
       setUsername('');
       setPassword('');
+      history.push('/');
     } catch (error) {
       console.error(error);
     }
