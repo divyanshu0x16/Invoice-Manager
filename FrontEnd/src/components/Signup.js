@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import signupService from '../services/signup';
 import { useHistory, Link } from 'react-router-dom';
 
-export const FormElement = ({ name, value, setValue }) => {
+export const FormElement = ({ name, value, setValue, error }) => {
   return (
     <div className="pb-6">
       <div className="text-all-bp font-semibold pb-1.5">{name}</div>
@@ -13,6 +13,7 @@ export const FormElement = ({ name, value, setValue }) => {
         className="transition-colors duration-300 focus:border-all-bp dark:focus:border-all-bp pl-2 py-2 text-sm transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md dark:border-all-darkbg border-gray-300"
         onChange={({ target }) => setValue(target.value)}
       />
+      <div className="text-red-500 pt-2 text-sm font-bold">{error}</div>
     </div>
   );
 };
@@ -21,19 +22,62 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  //Error Messages
+  const [usernameError, setUserError] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [success, setSuccess] = useState('');
   const history = useHistory();
 
   const handleSignup = async (event) => {
     event.preventDefault();
     try {
+      if (username === '') {
+        const errorMessage = { message: 'user empty' };
+        throw errorMessage;
+      } else if (name === '') {
+        const errorMessage = { message: 'name empty' };
+        throw errorMessage;
+      } else if (password === '') {
+        const errorMessage = { message: 'password empty' };
+        throw errorMessage;
+      }
       await signupService.signup({
         username,
         name,
         password,
       });
-      history.push('/login');
+      setSuccess('User created. Redirecting...');
+      setTimeout(() => {
+        history.push('/login');
+      }, 2000);
     } catch (error) {
-      console.log(error);
+      if (error.message.includes('user')) {
+        setUserError('*Username cannot be empty');
+        setTimeout(() => {
+          setUserError('');
+        }, 15000);
+      } else if (error.message.includes('name')) {
+        setNameError('*Name cannot be empty');
+        setTimeout(() => {
+          setNameError('');
+        }, 15000);
+      } else if (error.message.includes('password')) {
+        setPasswordError('*Password cannot be empty');
+        setTimeout(() => {
+          setPasswordError('');
+        }, 15000);
+      } else if (error.message.includes(403)) {
+        setPasswordError('*Password length must be greater than 3');
+        setTimeout(() => {
+          setPasswordError('');
+        }, 15000);
+      } else {
+        setUserError('*Username must be unique');
+        setTimeout(() => {
+          setUserError('');
+        }, 15000);
+      }
     }
   };
   //TODO: Add Form Error message. Currently there's no message if user input's wrong message
@@ -46,27 +90,33 @@ const Signup = () => {
               name="Username"
               value={username}
               setValue={setUsername}
+              error={usernameError}
             />
-            <FormElement name="Name" value={name} setValue={setName} />
+            <FormElement
+              name="Name"
+              value={name}
+              setValue={setName}
+              error={nameError}
+            />
             <FormElement
               name="Password"
               value={password}
               setValue={setPassword}
+              error={passwordError}
             />
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
-              >
-                Sign Up
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
+            >
+              Sign Up
+            </button>
           </form>
           <Link to="/login">
             <div className="cursor-pointer font-medium text-all-bp pt-6 text-sm">
               Already a User?
             </div>
           </Link>
+          <div className="text-green-500 text-sm font-bold pt-3">{success}</div>
         </div>
       </div>
     </div>
