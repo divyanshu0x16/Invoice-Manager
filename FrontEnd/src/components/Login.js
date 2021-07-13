@@ -50,12 +50,14 @@ const Login = () => {
               value={password}
               setValue={setPassword}
             />
-            <button
-              type="submit"
-              className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
-            >
-              Login
-            </button>
+            <div className="pt-4">
+              <button
+                type="submit"
+                className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
+              >
+                Login
+              </button>
+            </div>
           </form>
           <Link to="/signup">
             <div className="cursor-pointer font-medium text-all-bp pt-6 text-sm">
