@@ -10,8 +10,7 @@ export const FormElement = ({ name, value, setValue }) => {
         type={name === 'Password' ? 'password' : 'text'}
         value={value}
         name={name}
-        placeholder={name}
-        className="pl-2 py-2 text-sm transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md dark:border-all-darkbg border-gray-300"
+        className="transition-colors duration-500 focus:border-all-bp pl-2 py-2 text-sm transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md dark:border-all-darkbg border-gray-300"
         onChange={({ target }) => setValue(target.value)}
       />
     </div>
