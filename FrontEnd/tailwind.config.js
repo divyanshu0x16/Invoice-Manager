@@ -11,10 +11,14 @@ module.exports = {
       },
       colors: {
         navbar: {
-          bg: '#373b54'
+          bg: '#373b54',
+          darkbg: '#1e2139'
         },
         all: {
-          bp: '#7c5dfa'
+          bp: '#7c5dfa',
+          darkbg: '#141625',
+          lightbg: '#f8f8fb',
+          switch: '#858bb3'
         },
         logo: {
           light: "#9277ff",

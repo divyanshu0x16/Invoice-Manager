@@ -10,7 +10,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider>
-      <div className="relative md:flex">
+      <div className="relative md:flex bg-all-lightbg dark:bg-all-darkbg dark:text-white">
         <Navbar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
