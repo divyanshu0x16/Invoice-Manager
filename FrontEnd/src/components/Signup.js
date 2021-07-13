@@ -50,7 +50,7 @@ const Signup = () => {
       setSuccess('User created. Redirecting...');
       setTimeout(() => {
         history.push('/login');
-      }, 2000);
+      }, 1000);
     } catch (error) {
       if (error.message.includes('user')) {
         setUserError('*Username cannot be empty');

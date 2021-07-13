@@ -36,7 +36,7 @@ const Login = () => {
       setSuccess('Login successfull :D');
       setTimeout(() => {
         setUser(JSON.parse(localStorage.getItem('userDetails')));
-      }, 2000);
+      }, 1000);
     } catch (error) {
       setError(`Wrong Credentials :(`);
       setTimeout(() => {
