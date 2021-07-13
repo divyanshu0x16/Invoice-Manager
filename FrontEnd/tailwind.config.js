@@ -15,6 +15,10 @@ module.exports = {
         },
         all: {
           bp: '#7c5dfa'
+        },
+        logo: {
+          light: "#9277ff",
+          dark: "#7c5dfa"
         }
       }
     },
