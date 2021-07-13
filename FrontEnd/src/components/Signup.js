@@ -4,14 +4,14 @@ import { useHistory } from 'react-router-dom';
 
 export const FormElement = ({ name, value, setValue }) => {
   return (
-    <div>
-      <div className="text-all-bp font-semibold">{name}</div>
+    <div className="pb-6">
+      <div className="text-all-bp font-semibold pb-1.5">{name}</div>
       <input
         type="text"
         value={value}
-        name="Username"
-        placeholder="Username"
-        className="transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md"
+        name={name}
+        placeholder={name}
+        className="pl-2 py-2 text-gray-500 text-sm transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md"
         onChange={({ target }) => setValue(target.value)}
       />
     </div>
@@ -54,7 +54,7 @@ const Signup = () => {
               setValue={setName}
             />
             <FormElement
-              name="Passowrd"
+              name="Password"
               value={password}
               setValue={setPassword}
             />

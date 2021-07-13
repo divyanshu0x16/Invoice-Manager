@@ -12,22 +12,25 @@ module.exports = {
       colors: {
         navbar: {
           bg: '#373b54',
-          darkbg: '#1e2139'
+          darkbg: '#1e2139',
         },
         all: {
           bp: '#7c5dfa',
           darkbg: '#141625',
           lightbg: '#f8f8fb',
-          switch: '#858bb3'
+          switch: '#858bb3',
         },
         logo: {
-          light: "#9277ff",
-          dark: "#7c5dfa"
+          light: '#9277ff',
+          dark: '#7c5dfa',
         },
         line: {
-          color: "#494E6E"
-        }
-      }
+          color: '#494E6E',
+        },
+      },
+      outline: {
+        purple: '2px solid #7c5dfa',
+      },
     },
     colors: {
       transparent: 'transparent',
@@ -45,10 +48,10 @@ module.exports = {
     },
   },
   screens: {
-    'sm': '640px',
-    'md': '768px',
-    'lg': '1024px',
-    'xl': '1280px',
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
     '2xl': '1536px',
   },
   variants: {
