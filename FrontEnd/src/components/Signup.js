@@ -2,6 +2,22 @@ import React, { useState } from 'react';
 import signupService from '../services/signup';
 import { useHistory } from 'react-router-dom';
 
+export const FormElement = ({ name, value, setValue }) => {
+  return (
+    <div>
+      <div className="text-all-bp font-semibold">{name}</div>
+      <input
+        type="text"
+        value={value}
+        name="Username"
+        placeholder="Username"
+        className="transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md"
+        onChange={({ target }) => setValue(target.value)}
+      />
+    </div>
+  );
+};
+
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
@@ -21,44 +37,30 @@ const Signup = () => {
       console.log(error);
     }
   };
-
+  //TODO: Add Form Error message. Currently there's no message if user input's wrong message
   return (
     <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
-      <div className="">
-        <form onSubmit={handleSignup}>
-          <div>
-            <div className="text-all-bp font-semibold">Username</div>
-            <input
-              type="text"
-              value={username}
+      <div className="transition-colors duration-300 bg-white dark:bg-navbar-darkbg shadow-2xl rounded-xl">
+        <div className="py-10 px-10">
+          <form onSubmit={handleSignup}>
+            <FormElement
               name="Username"
-              placeholder="Username"
-              onChange={({ target }) => setUsername(target.value)}
+              value={username}
+              setValue={setUsername}
             />
-          </div>
-          <div>
-            <div  className="text-all-bp font-semibold">Name</div>
-            <input
-              type="text"
+            <FormElement
+              name="Name"
               value={name}
-              name="Name"
-              placeholder="Name"
-              onChange={({ target }) => setName(target.value)}
+              setValue={setName}
             />
-          </div>
-          <div>
-            <div  className="text-all-bp font-semibold">Password</div>
-            <div>3 or more characters</div>
-            <input
-              type="password"
+            <FormElement
+              name="Passowrd"
               value={password}
-              name="Name"
-              placeholder="Password"
-              onChange={({ target }) => setPassword(target.value)}
+              setValue={setPassword}
             />
-          </div>
-          <button type="submit">SignUp</button>
-        </form>
+            <button type="submit">SignUp</button>
+          </form>
+        </div>
       </div>
     </div>
   );
