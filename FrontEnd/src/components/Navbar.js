@@ -27,7 +27,7 @@ const Navbar = () => {
           </div>
           <div className="place-self-end">
             <div className="grid grid-flow-col md:grid-flow-row">
-              <div className="mt-1">
+              <div className="mt-1 md:mt-0 md:pl-8">
                 {theme === 'dark' ? (
                   <div
                     onClick={() =>
@@ -62,7 +62,7 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              <div className="cursor-pointer mx-5 mb-3">
+              <div className="cursor-pointer mx-5 mb-3 md:mx-7 md:my-8">
                 <img src={user} alt="user" className="h-10" />
               </div>
             </div>
