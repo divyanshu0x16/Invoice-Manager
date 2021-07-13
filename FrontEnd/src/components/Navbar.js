@@ -22,8 +22,10 @@ const Navbar = () => {
             </div>
           </div>
           <div className="place-self-end">
-            <div>switch</div>
-            <div>user</div>
+            <div className="grid grid-flow-col md:grid-flow-row divide-x-2 divide-line-color md:divide-x-0 md:divide-y-2">
+              <div className="pb-10 md:pb-2 pr-0 md:pr-10">switch</div>
+              <div>user</div>
+            </div>
           </div>
         </div>
       </div>

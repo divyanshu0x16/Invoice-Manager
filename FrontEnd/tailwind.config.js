@@ -19,6 +19,9 @@ module.exports = {
         logo: {
           light: "#9277ff",
           dark: "#7c5dfa"
+        },
+        line: {
+          color: "#494E6E"
         }
       }
     },
