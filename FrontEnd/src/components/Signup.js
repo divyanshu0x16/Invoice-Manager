@@ -7,11 +7,11 @@ export const FormElement = ({ name, value, setValue }) => {
     <div className="pb-6">
       <div className="text-all-bp font-semibold pb-1.5">{name}</div>
       <input
-        type="text"
+        type={name === 'Password' ? 'password' : 'text'}
         value={value}
         name={name}
         placeholder={name}
-        className="pl-2 py-2 text-gray-500 text-sm transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md"
+        className="pl-2 py-2 text-sm transition-colors duration-300 bg-white dark:bg-all-darkbg rounded-md dark:border-none border-gray-300"
         onChange={({ target }) => setValue(target.value)}
       />
     </div>
@@ -48,11 +48,7 @@ const Signup = () => {
               value={username}
               setValue={setUsername}
             />
-            <FormElement
-              name="Name"
-              value={name}
-              setValue={setName}
-            />
+            <FormElement name="Name" value={name} setValue={setName} />
             <FormElement
               name="Password"
               value={password}
