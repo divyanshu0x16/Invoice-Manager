@@ -10,6 +10,9 @@ const Login = () => {
   const initialUser = JSON.parse(localStorage.getItem('userDetails'));
   const [user, setUser] = useState(initialUser);
 
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+
   const history = useHistory();
 
   useEffect(() => {
@@ -29,9 +32,16 @@ const Login = () => {
       localStorage.setItem('userDetails', JSON.stringify(data));
       setUsername('');
       setPassword('');
-      setUser(JSON.parse(localStorage.getItem('userDetails')));
+      setError('');
+      setSuccess('Login successfull :D');
+      setTimeout(() => {
+        setUser(JSON.parse(localStorage.getItem('userDetails')));
+      }, 2000);
     } catch (error) {
-      console.error(error);
+      setError(`Wrong Credentials :(`);
+      setTimeout(() => {
+        setError('');
+      }, 15000);
     }
   };
 
@@ -50,20 +60,20 @@ const Login = () => {
               value={password}
               setValue={setPassword}
             />
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
-              >
-                Login
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
+            >
+              Login
+            </button>
           </form>
           <Link to="/signup">
             <div className="cursor-pointer font-medium text-all-bp pt-6 text-sm">
               New Here?
             </div>
           </Link>
+          <div className="text-green-500 text-sm font-bold pt-3">{success}</div>
+          <div className="text-red-500 text-sm font-bold pt-3">{error}</div>
         </div>
       </div>
     </div>
