@@ -10,12 +10,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider>
+      <div className="relative md:flex">
         <Navbar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
         </Switch>
+      </div>
       </ThemeProvider>
     </BrowserRouter>
   );

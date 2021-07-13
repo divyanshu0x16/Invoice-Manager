@@ -9,6 +9,14 @@ module.exports = {
       fontFamily: {
         sans: ['Spartan', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        navbar: {
+          bg: '#373b54'
+        },
+        all: {
+          bp: '#7c5dfa'
+        }
+      }
     },
     colors: {
       transparent: 'transparent',
@@ -24,6 +32,13 @@ module.exports = {
       blue: colors.blue,
       green: colors.emerald,
     },
+  },
+  screens: {
+    'sm': '640px',
+    'md': '768px',
+    'lg': '1024px',
+    'xl': '1280px',
+    '2xl': '1536px',
   },
   variants: {
     extend: {},
