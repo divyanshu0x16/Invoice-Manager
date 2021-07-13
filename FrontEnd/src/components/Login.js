@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import loginService from '../services/login';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import { FormElement } from './Signup';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -36,28 +37,32 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
-      <div className="">
-        <form onSubmit={handleLogin}>
-          <div>
-            username
-            <input
-              type="text"
-              value={username}
+      <div className="transition-colors duration-300 bg-white dark:bg-navbar-darkbg shadow-2xl rounded-xl">
+        <div className="py-10 px-10">
+          <form onSubmit={handleLogin}>
+            <FormElement
               name="Username"
-              onChange={({ target }) => setUsername(target.value)}
+              value={username}
+              setValue={setUsername}
             />
-          </div>
-          <div>
-            password
-            <input
-              type="password"
-              value={password}
+            <FormElement
               name="Password"
-              onChange={({ target }) => setPassword(target.value)}
+              value={password}
+              setValue={setPassword}
             />
-          </div>
-          <button type="submit">login</button>
-        </form>
+            <button
+              type="submit"
+              className="shadow-lg bg-all-bp text-white rounded-md px-4 py-2 font-bold transform duration-300 hover:scale-105"
+            >
+              Login
+            </button>
+          </form>
+          <Link to="/signup">
+            <div className="cursor-pointer font-medium text-all-bp pt-6 text-sm">
+              New Here?
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
