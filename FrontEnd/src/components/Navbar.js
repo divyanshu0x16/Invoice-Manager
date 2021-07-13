@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div className="md:rounded-r-2xl h-16 md:min-h-screen bg-navbar-bg">
       <div className="w-full md:w-24">
-        <div className="shadow-2xl bg-logo-light rounded-r-2xl md:h-20 h-16 w-20 md:w-full">
+        <div className="bg-logo-light rounded-r-2xl md:h-20 h-16 w-20 md:w-full">
           <div className="px-3 pt-1 md:px-4 md:pt-2.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
