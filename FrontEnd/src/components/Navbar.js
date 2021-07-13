@@ -27,7 +27,7 @@ const Navbar = () => {
           </div>
           <div className="place-self-end">
             <div className="grid grid-flow-col md:grid-flow-row">
-              <div className="md:pl-6 md:pb-4">
+              <div className="mt-1">
                 {theme === 'dark' ? (
                   <div
                     onClick={() =>
@@ -36,7 +36,7 @@ const Navbar = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="cursor-pointer h-7 w-7 fill-current text-all-switch"
+                      className="cursor-pointer h-8 w-8 fill-current text-all-switch"
                       viewBox="0 0 20 20"
                     >
                       <path
@@ -54,7 +54,7 @@ const Navbar = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="cursor-pointer h-7 w-7 fill-current text-all-switch"
+                      className="cursor-pointer h-8 w-8 fill-current text-all-switch"
                       viewBox="0 0 20 20"
                     >
                       <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
@@ -62,8 +62,8 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              <div className="cursor-pointer md:pl-5 md:pb-6 pr-5 md:pr-7 pt-3">
-                <img src={user} alt="user" className="md:h-10 h-9" />
+              <div className="cursor-pointer mx-5 mb-3">
+                <img src={user} alt="user" className="h-10" />
               </div>
             </div>
           </div>
