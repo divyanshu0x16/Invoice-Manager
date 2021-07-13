@@ -1,4 +1,5 @@
 import React from 'react';
+import user from '../utils/user.png'
 
 const Navbar = () => {
   return (
@@ -22,9 +23,11 @@ const Navbar = () => {
             </div>
           </div>
           <div className="place-self-end">
-            <div className="grid grid-flow-col md:grid-flow-row divide-x-2 divide-line-color md:divide-x-0 md:divide-y-2">
+            <div className="grid grid-flow-col md:grid-flow-row">
               <div className="pb-10 md:pb-2 pr-0 md:pr-10">switch</div>
-              <div>user</div>
+              <div className="cursor-pointer transform hover:scale-105 md:pl-5 md:pb-5 pr-5 pt-3">
+                <img src={user} alt="user" className="md:h-10 h-9"/>
+              </div>
             </div>
           </div>
         </div>
