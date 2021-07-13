@@ -16,7 +16,7 @@ const Signup = () => {
         name,
         password,
       });
-      history.push("/login");
+      history.push('/login');
     } catch (error) {
       console.log(error);
     }
@@ -24,37 +24,42 @@ const Signup = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
-        <div>
-          Username
-          <input
-            type="text"
-            value={username}
-            name="Username"
-            onChange={({ target }) => setUsername(target.value)}
-          />
-        </div>
-        <div>
-          Name
-          <input
-            type="text"
-            value={name}
-            name="Name"
-            onChange={({ target }) => setName(target.value)}
-          />
-        </div>
-        <div>
-          Password
-          <input
-            type="password"
-            value={password}
-            name="Name"
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button type="submit">SignUp</button>
-      </form>
+      <div className="">
+        <form onSubmit={handleSignup}>
+          <div>
+            <div className="text-all-bp font-semibold">Username</div>
+            <input
+              type="text"
+              value={username}
+              name="Username"
+              placeholder="Username"
+              onChange={({ target }) => setUsername(target.value)}
+            />
+          </div>
+          <div>
+            <div  className="text-all-bp font-semibold">Name</div>
+            <input
+              type="text"
+              value={name}
+              name="Name"
+              placeholder="Name"
+              onChange={({ target }) => setName(target.value)}
+            />
+          </div>
+          <div>
+            <div  className="text-all-bp font-semibold">Password</div>
+            <div>3 or more characters</div>
+            <input
+              type="password"
+              value={password}
+              name="Name"
+              placeholder="Password"
+              onChange={({ target }) => setPassword(target.value)}
+            />
+          </div>
+          <button type="submit">SignUp</button>
+        </form>
+      </div>
     </div>
   );
 };
