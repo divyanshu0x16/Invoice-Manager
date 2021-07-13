@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import loginService from '../services/login'
+import loginService from '../services/login';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
@@ -8,7 +8,7 @@ const Login = () => {
 
   const initialUser = JSON.parse(localStorage.getItem('userDetails'));
   const [user, setUser] = useState(initialUser);
-  
+
   const history = useHistory();
 
   useEffect(() => {
@@ -35,28 +35,30 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <div>
-          username
-          <input
-            type="text"
-            value={username}
-            name="Username"
-            onChange={({ target }) => setUsername(target.value)}
-          />
-        </div>
-        <div>
-          password
-          <input
-            type="password"
-            value={password}
-            name="Password"
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button type="submit">login</button>
-      </form>
+    <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
+      <div className="">
+        <form onSubmit={handleLogin}>
+          <div>
+            username
+            <input
+              type="text"
+              value={username}
+              name="Username"
+              onChange={({ target }) => setUsername(target.value)}
+            />
+          </div>
+          <div>
+            password
+            <input
+              type="password"
+              value={password}
+              name="Password"
+              onChange={({ target }) => setPassword(target.value)}
+            />
+          </div>
+          <button type="submit">login</button>
+        </form>
+      </div>
     </div>
   );
 };

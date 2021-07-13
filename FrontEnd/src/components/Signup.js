@@ -23,7 +23,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
       <h2>Signup</h2>
       <form onSubmit={handleSignup}>
         <div>
