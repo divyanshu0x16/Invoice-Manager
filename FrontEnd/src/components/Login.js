@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import loginService from '../services/login';
 import { useHistory, Link } from 'react-router-dom';
 import { FormElement } from './Signup';
+import { motion } from 'framer-motion';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -46,7 +47,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
+    <motion.div
+      className="flex flex-col justify-center items-center mx-auto min-h-screen"
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1.0, opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="transition-colors duration-300 bg-white dark:bg-navbar-darkbg shadow-2xl rounded-xl">
         <div className="py-10 px-10">
           <form onSubmit={handleLogin}>
@@ -76,7 +82,7 @@ const Login = () => {
           <div className="text-red-500 text-sm font-bold pt-3">{error}</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

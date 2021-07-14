@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import signupService from '../services/signup';
 import { useHistory, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export const FormElement = ({ name, value, setValue, error }) => {
   return (
@@ -82,7 +83,12 @@ const Signup = () => {
   };
   //TODO: Add Form Error message. Currently there's no message if user input's wrong message
   return (
-    <div className="flex flex-col justify-center items-center mx-auto min-h-screen">
+    <motion.div
+      className="flex flex-col justify-center items-center mx-auto min-h-screen"
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1.0, opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="transition-colors duration-300 bg-white dark:bg-navbar-darkbg shadow-2xl rounded-xl">
         <div className="py-10 px-10">
           <form onSubmit={handleSignup}>
@@ -119,7 +125,7 @@ const Signup = () => {
           <div className="text-green-500 text-sm font-bold pt-3">{success}</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
