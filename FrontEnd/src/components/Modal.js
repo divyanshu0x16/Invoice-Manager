@@ -58,14 +58,9 @@ const Modal = React.forwardRef((_, ref) => {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
+                  className="border-0 border-transparent outline-none focus:outline-none"
                 >
                   Deactivate
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                >
-                  Cancel
                 </button>
               </div>
             </div>
