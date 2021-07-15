@@ -34,7 +34,7 @@ const Modal = React.forwardRef((_, ref) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="fixed inset-0 backdrop-filter backdrop-blur-lg" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -54,7 +54,7 @@ const Modal = React.forwardRef((_, ref) => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom rounded-lg text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-              <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <div className="flex flex-col">
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
