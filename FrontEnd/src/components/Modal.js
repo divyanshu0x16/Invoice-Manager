@@ -24,7 +24,7 @@ const Modal = React.forwardRef((_, ref) => {
         open={open}
         onClose={setOpen}
       >
-        <div className="flex items-end justify-center max-h-full p-modal px-4 text-center sm:block sm:p-0">
+        <div className="flex px-4 text-center sm:block flex-col justify-center items-center mx-auto min-h-screen">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
