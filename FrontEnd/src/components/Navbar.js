@@ -63,7 +63,7 @@ const Navbar = () => {
                 )}
               </div>
               <div className="cursor-pointer mx-5 mb-3 md:mx-7 md:my-8">
-                <img src={user} alt="user" className="h-10" />
+                <img src={user} alt="user" className="h-10" onClick={() => console.log('test')} />
               </div>
             </div>
           </div>
