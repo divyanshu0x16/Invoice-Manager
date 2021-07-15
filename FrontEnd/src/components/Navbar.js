@@ -2,7 +2,7 @@ import React from 'react';
 import user from '../utils/user.png';
 import { ThemeContext } from '../utils/themeContext';
 
-const Navbar = () => {
+const Navbar = ({ modalToggle }) => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   return (
@@ -63,7 +63,12 @@ const Navbar = () => {
                 )}
               </div>
               <div className="cursor-pointer mx-5 mb-3 md:mx-7 md:my-8">
-                <img src={user} alt="user" className="h-10" onClick={() => console.log('test')} />
+                <img
+                  src={user}
+                  alt="user"
+                  className="h-10"
+                  onClick={() => modalToggle.current.toggleModal()}
+                />
               </div>
             </div>
           </div>

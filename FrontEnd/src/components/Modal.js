@@ -1,12 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useRef, useState, useImperativeHandle } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationIcon } from '@heroicons/react/outline';
 
-export default function Example() {
-  const [open, setOpen] = useState(true);
+const Modal = React.forwardRef((props, ref) => {
+  const [open, setOpen] = useState(false);
 
   const cancelButtonRef = useRef(null);
+
+  const toggleModal = () => {
+    setOpen(!open);
+  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      toggleModal,
+    };
+  });
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -96,4 +106,6 @@ export default function Example() {
       </Dialog>
     </Transition.Root>
   );
-}
+});
+
+export default Modal;
