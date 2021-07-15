@@ -64,7 +64,7 @@ const Modal = React.forwardRef((_, ref) => {
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
-                    className="py-2 border-0 border-transparent outline-none focus:outline-none text-transparent bg-clip-text bg-gradient-to-br font-semibold text-6xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
+                    className="py-2 px-2 border-0 border-transparent outline-none focus:outline-none text-transparent bg-clip-text bg-gradient-to-br font-semibold text-6xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
                   >
                     GitHub
                   </button>
