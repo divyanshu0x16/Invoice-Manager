@@ -16,7 +16,14 @@ const Dashboard = () => {
     }
   });
 
-  return <div>And This is the Dashboard</div>;
+  return (
+    <div className="mx-6 md:mx-auto">
+      <div className="md:pt-24 pt-8 flex flex-row">
+          <div className="justify-self-start">Invoices</div>
+          <div className="justify-self-end">Create button</div>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
