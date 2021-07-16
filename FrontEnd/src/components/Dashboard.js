@@ -10,6 +10,17 @@ const Dashboard = () => {
   const [invoices, setInvoices] = useState([]);
   const user = JSON.parse(localStorage.getItem('userDetails'));
 
+  useEffect(() => {
+    if (user !== null) {
+      importService
+        .getInvoices(user.token)
+        .then((data) => {
+          setInvoices(data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
+
   if (user === null) {
     return <Redirect to="/login" />;
   }
@@ -19,20 +30,17 @@ const Dashboard = () => {
       localStorage.clear();
     }
   });
-  /*
-  importService
-    .getInvoices(user.token)
-    .then((data) => {
-      setInvoices(data);
-    })
-    .catch((error) => console.log(error));*/
 
   return (
     <div className="mx-6 md:mx-auto">
       <div className="lg:pt-24 md:pt-16 pt-8 grid grid-cols-3">
         <div className="justify-self-start">
           <div className="font-bold text-2xl md:text-4xl">Invoices</div>
-          <div className="text-xs pt-0.5">{`You have ${invoices.length} total invoices`}</div>
+          <div className="text-xs pt-0.5">
+            {invoices
+              ? `You have ${invoices.length} toal invoices.`
+              : `Error connecting to server`}
+          </div>
         </div>
         <div className="md:px-24 lg:px-32"></div>
         <div className="justify-self-end grid grid-cols-2">
