@@ -27,6 +27,16 @@ module.exports = {
         line: {
           color: '#494E6E',
         },
+        paid: {
+          text: '#62d79f',
+          bg: '#f3fdf9',
+          darkbg: '#1f2c3f',
+        },
+        pending: {
+          text: '#ef8f07',
+          bg: '#fef8f0',
+          darkbg: '#2b2736'
+        }
       },
       outline: {
         purple: '2px solid #7c5dfa',
