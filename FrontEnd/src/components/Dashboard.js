@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Filter from './Filter';
+import importService from '../services/invoices';
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const Dashboard = () => {
+  const [invoices, setInvoices] = useState([]);
   const user = JSON.parse(localStorage.getItem('userDetails'));
 
   if (user === null) {
@@ -17,18 +19,25 @@ const Dashboard = () => {
       localStorage.clear();
     }
   });
+  /*
+  importService
+    .getInvoices(user.token)
+    .then((data) => {
+      setInvoices(data);
+    })
+    .catch((error) => console.log(error));*/
 
   return (
     <div className="mx-6 md:mx-auto">
       <div className="lg:pt-24 md:pt-16 pt-8 grid grid-cols-3">
         <div className="justify-self-start">
           <div className="font-bold text-2xl md:text-4xl">Invoices</div>
-          <div className="text-xs pt-0.5">You have 5 total invoices.</div>
+          <div className="text-xs pt-0.5">{`You have ${invoices.length} total invoices`}</div>
         </div>
         <div className="md:px-24 lg:px-32"></div>
         <div className="justify-self-end grid grid-cols-2">
           <div className="mt-4">
-            <Filter/>
+            <Filter />
           </div>
           <div className="cursor-pointer bg-all-bp text-white my-auto md:px-3 rounded-full font-bold transform hover:scale-105 duration-300">
             <div className="py-2 flex flex-row">
