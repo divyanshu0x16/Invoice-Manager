@@ -20,13 +20,14 @@ const Dashboard = () => {
 
   return (
     <div className="mx-6 md:mx-auto">
-      <div className="md:pt-24 pt-8 grid grid-cols-2">
+      <div className="lg:pt-24 md:pt-16 pt-8 grid grid-cols-3">
         <div className="justify-self-start">
-          <div className="font-bold text-2xl">Invoices</div>
+          <div className="font-bold text-2xl md:text-4xl">Invoices</div>
           <div className="text-xs pt-0.5">You have 5 total invoices.</div>
         </div>
+        <div className="md:px-24 lg:px-32"></div>
         <div className="justify-self-end grid grid-cols-2">
-          <div>
+          <div className="mt-4">
             <Filter/>
           </div>
           <div className="cursor-pointer bg-all-bp text-white my-auto px-3 rounded-full font-bold transform hover:scale-105 duration-300">

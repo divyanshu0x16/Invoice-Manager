@@ -13,7 +13,7 @@ const Filter = () => {
       {({ open }) => (
         <>
           <div>
-            <Menu.Button className="flex flex-row my-4 mr-4 w-full text-sm font-bold focus:outline-none">
+            <Menu.Button className="flex flex-row w-full text-sm font-bold focus:outline-none">
               Filter
               {open ? (
                 <ChevronUpIcon
