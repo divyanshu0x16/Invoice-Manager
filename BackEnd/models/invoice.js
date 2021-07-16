@@ -23,6 +23,7 @@ const invoiceSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  type: String
 });
 
 invoiceSchema.set('toJSON', {
