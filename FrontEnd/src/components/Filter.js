@@ -41,7 +41,7 @@ const Filter = () => {
           >
             <Menu.Items
               static
-              className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-navbar-darkbg ring-1 ring-black ring-opacity-5 focus:outline-none"
             >
               <div className="py-1">
                 <Menu.Item>
@@ -49,11 +49,13 @@ const Filter = () => {
                     <a
                       href="/#"
                       className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        active
+                          ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
+                          : 'dark:text-white font-bold',
                         'block px-4 py-2 text-sm'
                       )}
                     >
-                      Account settings
+                      Paid
                     </a>
                   )}
                 </Menu.Item>
@@ -62,11 +64,13 @@ const Filter = () => {
                     <a
                       href="/#"
                       className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        active
+                          ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
+                          : 'dark:text-white font-bold',
                         'block px-4 py-2 text-sm'
                       )}
                     >
-                      Support
+                      Pending
                     </a>
                   )}
                 </Menu.Item>
@@ -75,31 +79,16 @@ const Filter = () => {
                     <a
                       href="/#"
                       className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        active
+                          ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
+                          : 'dark:text-white font-bold',
                         'block px-4 py-2 text-sm'
                       )}
                     >
-                      License
+                      Draft
                     </a>
                   )}
                 </Menu.Item>
-                <form method="POST" action="#">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        type="submit"
-                        className={classNames(
-                          active
-                            ? 'bg-gray-100 text-gray-900'
-                            : 'text-gray-700',
-                          'block w-full text-left px-4 py-2 text-sm'
-                        )}
-                      >
-                        Sign out
-                      </button>
-                    )}
-                  </Menu.Item>
-                </form>
               </div>
             </Menu.Items>
           </Transition>
