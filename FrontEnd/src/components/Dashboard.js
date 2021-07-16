@@ -30,7 +30,7 @@ const Dashboard = () => {
           <div className="mt-4">
             <Filter/>
           </div>
-          <div className="cursor-pointer bg-all-bp text-white my-auto px-3 rounded-full font-bold transform hover:scale-105 duration-300">
+          <div className="cursor-pointer bg-all-bp text-white my-auto md:px-3 rounded-full font-bold transform hover:scale-105 duration-300">
             <div className="py-2 flex flex-row">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
