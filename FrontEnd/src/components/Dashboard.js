@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   return (
     <div className="mx-6 md:mx-auto">
-      <div className="md:pt-24 pt-8 flex flex-row">
+      <div className="md:pt-24 pt-8 grid grid-cols-2">
           <div className="justify-self-start">Invoices</div>
           <div className="justify-self-end">Create button</div>
       </div>
