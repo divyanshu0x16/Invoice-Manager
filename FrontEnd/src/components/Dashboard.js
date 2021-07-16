@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Filter from './Dropdown';
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -27,7 +26,7 @@ const Dashboard = () => {
         </div>
         <div className="justify-self-end grid grid-cols-2">
           <div>
-            <Filter />
+            Filter
           </div>
           <div className="cursor-pointer bg-all-bp text-white my-auto px-3 rounded-full font-bold transform hover:scale-105 duration-300">
             <div className="py-2 flex flex-row">
