@@ -56,7 +56,7 @@ const Element = () => {
             <div className="self-center">
               <ChevronLeftIcon className="text-all-bp h-8 w-8" />
             </div>
-            <div className="self-center pt-1 transform hover:scale-105">Go Back</div>
+            <div className="self-center pt-1 transform hover:scale-105 duration-300">Go Back</div>
           </div>
         </div>
       </Link>
