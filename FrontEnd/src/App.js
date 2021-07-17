@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
+import Element from './components/Element';
 import { ThemeProvider } from './utils/themeContext';
 import Modal from './components/Modal';
 
@@ -19,6 +20,7 @@ const App = () => {
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/invoice" component={Element} />
           </Switch>
         </div>
       </ThemeProvider>
