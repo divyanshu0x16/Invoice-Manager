@@ -21,7 +21,7 @@ const Dashboard = () => {
         })
         .catch((error) => console.log(error));
     }
-  }, [user]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (user === null) {
     return <Redirect to="/login" />;
@@ -42,8 +42,25 @@ const Dashboard = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Paid />
-        <Pending />
+        {invoices.map((invoice) => {
+          let amount = 0;
+          invoice.items.forEach((item) => {
+            amount += item.price;
+          });
+
+          if (invoice.type === 'pending') {
+            return (
+              <Pending
+                key={invoice.id}
+                name={invoice.client.name}
+                amount={amount}
+              />
+            );
+          }
+          return (
+            <Paid key={invoice.id} name={invoice.client.name} amount={amount} />
+          );
+        })}
       </motion.div>
     </div>
   );
