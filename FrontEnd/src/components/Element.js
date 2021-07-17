@@ -48,6 +48,7 @@ const Element = () => {
   return (
     <>
       <motion.div
+        className="mx-6 md:mx-auto"
         initial={{ scale: 1.0, opacity: 0.5 }}
         animate={{ scale: 1.0, opacity: 1 }}
         transition={{ duration: 1 }}
