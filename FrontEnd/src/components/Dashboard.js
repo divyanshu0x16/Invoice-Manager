@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Header from './Dashboard/Header';
 import importService from '../services/invoices';
 import { Paid, Pending } from './Dashboard/Elements';
 import { motion } from 'framer-motion';
+import moment from 'moment';
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -48,17 +49,28 @@ const Dashboard = () => {
             amount += item.price;
           });
 
+          const path = '/invoice/' + invoice.id;
+
           if (invoice.type === 'pending') {
             return (
-              <Pending
-                key={invoice.id}
-                name={invoice.client.name}
-                amount={amount}
-              />
+              <Link to={path} key={invoice.id}>
+                <Pending
+                  name={invoice.client.name}
+                  amount={amount}
+                  date={moment(invoice.client.date).format('Do MMM YY')}
+                />
+              </Link>
             );
           }
           return (
-            <Paid key={invoice.id} name={invoice.client.name} amount={amount} />
+            <Link to={path} key={invoice.id}>
+              <Paid
+                name={invoice.client.name}
+                amount={amount}
+                key={invoice.id}
+                date={moment(invoice.client.date).format('Do MMM YY')}
+              />
+            </Link>
           );
         })}
       </motion.div>
