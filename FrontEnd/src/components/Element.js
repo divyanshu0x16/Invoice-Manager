@@ -11,6 +11,7 @@ import {
   PaymentDue,
   BillTo,
   SentTo,
+  Item,
 } from './ElementDetails';
 
 const jwt = require('jsonwebtoken');
@@ -74,6 +75,9 @@ const Element = () => {
           </div>
           <div className="text-xs py-8">
             <SentTo invoice={invoice} />
+          </div>
+          <div className="pt-4">
+            <Item invoice={invoice} />
           </div>
         </div>
       </div>

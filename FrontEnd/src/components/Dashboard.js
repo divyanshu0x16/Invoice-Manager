@@ -58,7 +58,7 @@ const Dashboard = () => {
         {invoices.map((invoice) => {
           let amount = 0;
           invoice.items.forEach((item) => {
-            amount += item.price;
+            amount += item.price * item.quantity;
           });
 
           const path = '/invoice/' + invoice.id;

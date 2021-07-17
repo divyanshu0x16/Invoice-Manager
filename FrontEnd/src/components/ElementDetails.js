@@ -28,7 +28,6 @@ export const Address = ({ invoice }) => {
   if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
     return <div>Loading...</div>;
   }
-  console.log(invoice);
   return (
     <div>
       <div>{invoice.to.address}</div>
@@ -91,6 +90,61 @@ export const BillTo = ({ invoice }) => {
       <div>{invoice.client.city}</div>
       <div>{invoice.client.country}</div>
       <div>{invoice.client.postcode}</div>
+    </div>
+  );
+};
+
+const Remaining = ({ items }) => {
+  if (items.length === 1) return null;
+  const remItems = items.slice(1, items.length);
+  return (
+    <div>
+      {remItems.map((item, index) => {
+        index += 1;
+        return (
+          <div
+            key={index}
+            className="transform-colors duration-300 bg-item-lightbg font-bold dark:bg-item-darkbg text-sm grid grid-cols-2 py-4"
+          >
+            <div className="self-center pl-6">{item.name}</div>
+            <div className="justify-self-end self-center pr-6">
+              <i className="fas fa-rupee-sign"></i>
+              {` ${item.price} x ${item.quantity}`}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export const Item = ({ invoice }) => {
+  if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
+    return <div>Loading...</div>;
+  }
+
+  let amount = 0;
+  invoice.items.forEach((item) => {
+    amount += item.price * item.quantity;
+  });
+
+  return (
+    <div>
+      <div className="transform-colors duration-300 bg-item-lightbg font-bold dark:bg-item-darkbg text-sm rounded-t-lg grid grid-cols-2 py-4">
+        <div className="self-center pl-6">{invoice.items[0].name}</div>
+        <div className="justify-self-end self-center pr-6">
+          <i className="fas fa-rupee-sign"></i>
+          {` ${invoice.items[0].price} x ${invoice.items[0].quantity}`}
+        </div>
+      </div>
+      <Remaining items={invoice.items} />
+      <div className="transform-colors duration-300 bg-item-lighttotal font-bold dark:bg-item-darktotal text-white text-sm rounded-b-lg grid grid-cols-2 py-8">
+        <div className="self-center pl-6">Amount Due</div>
+        <div className="justify-self-end self-center pr-6 text-xl">
+          <i className="fas fa-rupee-sign"></i>
+          {amount}
+        </div>
+      </div>
     </div>
   );
 };

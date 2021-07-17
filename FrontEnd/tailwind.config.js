@@ -35,8 +35,14 @@ module.exports = {
         pending: {
           text: '#ef8f07',
           bg: '#fef8f0',
-          darkbg: '#2b2736'
-        }
+          darkbg: '#2b2736',
+        },
+        item: {
+          lightbg: '#f9fafe',
+          darkbg: '#252945',
+          lighttotal: '#373b54',
+          darktotal: '#0c0e15',
+        },
       },
       outline: {
         purple: '2px solid #7c5dfa',
