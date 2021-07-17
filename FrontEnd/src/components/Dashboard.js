@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Header from './Dashboard/Header';
 import importService from '../services/invoices';
@@ -12,17 +12,29 @@ require('dotenv').config();
 const Dashboard = () => {
   const [invoices, setInvoices] = useState([]);
   const user = JSON.parse(localStorage.getItem('userDetails'));
+  const allInvoices = useRef(null);
 
   useEffect(() => {
     if (user !== null) {
       importService
         .getInvoices(user.token)
         .then((data) => {
+          allInvoices.current = data;
           setInvoices(data);
         })
         .catch((error) => console.log(error));
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const applyFilter = (type) => {
+    if (type !== 'all') {
+      setInvoices(
+        allInvoices.current.filter((invoice) => invoice.type === type)
+      );
+    } else {
+      setInvoices(allInvoices.current);
+    }
+  };
 
   if (user === null) {
     return <Redirect to="/login" />;
@@ -36,7 +48,7 @@ const Dashboard = () => {
 
   return (
     <div className="mx-6 md:mx-auto">
-      <Header invoices={invoices} />
+      <Header invoices={allInvoices.current} applyFilter={applyFilter} />
       <motion.div
         className="pt-8"
         initial={{ opacity: 0 }}

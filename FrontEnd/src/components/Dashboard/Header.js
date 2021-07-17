@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from './Filter';
 import { motion } from 'framer-motion';
 
-const Header = ({ invoices }) => {
+const Header = ({ invoices, applyFilter }) => {
   return (
     <motion.div
       className="lg:pt-24 md:pt-16 pt-8 grid grid-cols-3"
@@ -21,7 +21,7 @@ const Header = ({ invoices }) => {
       <div className="md:px-24 lg:px-32"></div>
       <div className="justify-self-end grid grid-cols-2">
         <div className="mt-4">
-          <Filter />
+          <Filter onFilter={applyFilter} />
         </div>
         <div className="cursor-pointer bg-all-bp text-white my-auto md:px-3 rounded-full font-bold transform hover:scale-105 duration-300">
           <div className="py-2 flex flex-row">

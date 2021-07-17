@@ -7,7 +7,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const Filter = () => {
+const Filter = ({ onFilter }) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       {({ open }) => (
@@ -48,6 +48,23 @@ const Filter = () => {
                   {({ active }) => (
                     <a
                       href="/#"
+                      onClick={() => onFilter('all')}
+                      className={classNames(
+                        active
+                          ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
+                          : 'dark:text-white font-bold',
+                        'block px-4 py-2 text-sm'
+                      )}
+                    >
+                      All
+                    </a>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      href="/#"
+                      onClick={() => onFilter('paid')}
                       className={classNames(
                         active
                           ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
@@ -63,6 +80,7 @@ const Filter = () => {
                   {({ active }) => (
                     <a
                       href="/#"
+                      onClick={() => onFilter('pending')}
                       className={classNames(
                         active
                           ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
@@ -71,21 +89,6 @@ const Filter = () => {
                       )}
                     >
                       Pending
-                    </a>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <a
-                      href="/#"
-                      className={classNames(
-                        active
-                          ? 'dark:text-white font-bold bg-gray-200 dark:bg-all-darkbg'
-                          : 'dark:text-white font-bold',
-                        'block px-4 py-2 text-sm'
-                      )}
-                    >
-                      Draft
                     </a>
                   )}
                 </Menu.Item>
