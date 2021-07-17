@@ -23,7 +23,8 @@ const invoiceSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  type: String
+  date: Date,
+  type: String,
 });
 
 invoiceSchema.set('toJSON', {

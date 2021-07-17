@@ -24,7 +24,7 @@ const Dashboard = () => {
         })
         .catch((error) => console.log(error));
     }
-  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const applyFilter = (type) => {
     if (type !== 'all') {
