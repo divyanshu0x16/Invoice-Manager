@@ -20,6 +20,20 @@ router.get('/', async (request, response) => {
   response.json(invoices);
 });
 
+router.get('/:id', async (request, response) => {
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+
+  if (!request.token || !decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' });
+  }
+
+  const invoice = await Invoice.findById(request.params.id);
+
+  if (invoice === null) return response.json(404);
+
+  return response.json(invoice).status(200);
+});
+
 router.post('/', async (request, response) => {
   const invoice = new Invoice(request.body);
 
