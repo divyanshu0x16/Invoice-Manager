@@ -51,26 +51,28 @@ const Element = () => {
       </div>
       <div className="pt-4">
         <div className="bg-white dark:bg-navbar-darkbg rounded-lg px-8 py-4">
-          <div className="text-sm font-normal">
+          <div className="text-xs font-normal">
             <Description invoice={invoice} />
           </div>
           <div>
-            <Address invoice={invoice} />
+            <div className="py-6 text-xs">
+              <Address invoice={invoice} />
+            </div>
           </div>
           <div className="grid grid-cols-2">
             <div className="grid grid-rows-2">
               <div>
                 <InvoiceDate invoice={invoice} />
               </div>
-              <div>
+              <div className="text-xs pt-3">
                 <PaymentDue invoice={invoice} />
               </div>
             </div>
-            <div>
+            <div className="text-xs">
               <BillTo invoice={invoice} />
             </div>
           </div>
-          <div>
+          <div className="text-xs py-8">
             <SentTo invoice={invoice} />
           </div>
         </div>
