@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
 import invoiceService from '../services/invoices';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ChevronLeftIcon } from '@heroicons/react/solid';
 
 import {
   Pending,
@@ -41,8 +44,23 @@ const Element = () => {
   });
 
   return (
-    <div className="mx-6 md:mx-auto">
-      <div className="lg:pt-24 md:pt-16 pt-8">
+    <motion.div
+      className="mx-6 md:mx-auto"
+      initial={{ scale: 1.0, opacity: 0.5 }}
+      animate={{ scale: 1.0, opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <Link to={'/'}>
+        <div className="lg:pt-24 md:pt-16 pt-8 text-sm hover:">
+          <div className="flex">
+            <div className="self-center">
+              <ChevronLeftIcon className="text-all-bp h-8 w-8" />
+            </div>
+            <div className="self-center pt-1 transform hover:scale-105">Go Back</div>
+          </div>
+        </div>
+      </Link>
+      <div className="pt-4">
         <div className="grid grid-cols-2 bg-white dark:bg-navbar-darkbg py-4 rounded-lg">
           <div className="self-center pl-8 font-bold">Status</div>
           <div className="justify-self-end pr-8">
@@ -51,7 +69,7 @@ const Element = () => {
         </div>
       </div>
       <div className="pt-4">
-        <div className="bg-white dark:bg-navbar-darkbg rounded-lg px-8 py-4">
+        <div className="transform-colors duration-300 bg-white dark:bg-navbar-darkbg rounded-lg px-8 py-4">
           <div className="text-xs font-normal">
             <Description invoice={invoice} />
           </div>
@@ -81,7 +99,7 @@ const Element = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

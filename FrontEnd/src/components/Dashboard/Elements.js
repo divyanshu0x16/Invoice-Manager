@@ -9,7 +9,7 @@ export const Paid = ({ date, name, amount }) => {
             <div className="py-3">{`Due ${date}`}</div>
           </div>
           <div className="font-normal text-sm">
-            <div className="py-3">{name}</div>
+            <div className="py-3 pl-2">{name}</div>
           </div>
           <div className="justify-self-center font-bold text-sm">
             <div className="py-3">
@@ -39,7 +39,7 @@ export const Pending = ({ date, name, amount }) => {
             <div className="py-3">{`Due ${date}`}</div>
           </div>
           <div className="font-normal text-sm">
-            <div className="py-3">{name}</div>
+            <div className="py-3 pl-2">{name}</div>
           </div>
           <div className="justify-self-center font-bold text-sm">
             <div className="py-3">
