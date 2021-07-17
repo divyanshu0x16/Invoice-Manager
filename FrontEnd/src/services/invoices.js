@@ -14,5 +14,19 @@ const getInvoices = async (token) => {
   }
 };
 
+const getSingleInvoice = async (token, id) => {
+  const url = baseUrl + `/${id}`;
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // eslint-disable-next-line
-export default { getInvoices };
+export default { getInvoices, getSingleInvoice };

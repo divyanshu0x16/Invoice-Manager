@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Header from './Dashboard/Header';
-import importService from '../services/invoices';
+import invoiceService from '../services/invoices';
 import { Paid, Pending } from './Dashboard/Elements';
 import { motion } from 'framer-motion';
 import moment from 'moment';
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user !== null) {
-      importService
+      invoiceService
         .getInvoices(user.token)
         .then((data) => {
           allInvoices.current = data;
@@ -24,7 +24,7 @@ const Dashboard = () => {
         })
         .catch((error) => console.log(error));
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const applyFilter = (type) => {
     if (type !== 'all') {
