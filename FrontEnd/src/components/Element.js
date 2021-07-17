@@ -42,11 +42,12 @@ const Element = () => {
       localStorage.clear();
     }
   });
-
+  //TODO: Make footer stick to bottom
+  //TODO: Implement footer dynamic button
+  //TODO: Implement delete footer functionality
   return (
     <>
       <motion.div
-        className="mx-6 md:mx-auto "
         initial={{ scale: 1.0, opacity: 0.5 }}
         animate={{ scale: 1.0, opacity: 1 }}
         transition={{ duration: 1 }}
@@ -105,14 +106,14 @@ const Element = () => {
       </motion.div>
       <footer className="transition-colors duration-300 bg-all-lightbg dark:bg-all-darkbg dark:text-white">
         <div className="flex flex-row-reverse space-x-4 px-8 bg-white dark:bg-navbar-darkbg py-4 md:hidden">
-          <div className="cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
+          <div className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
             Mark As Paid
           </div>
           <div></div>
-          <div className="cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
+          <div className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
             Delete
           </div>
-          <div className="cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+          <div className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
             Edit
           </div>
         </div>
