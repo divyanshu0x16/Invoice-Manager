@@ -28,7 +28,7 @@ const Element = () => {
     }
   });
 
-  return <div>Hi this is the element</div>;
+  return <div className="mx-6 md:mx-auto"><div className="lg:pt-24 md:pt-16 pt-8 grid grid-cols-3">Back</div></div>;
 };
 
 export default Element;
