@@ -51,29 +51,55 @@ const ElementHeader = ({ deleteInvoice, invoice, user, setInvoice }) => {
   if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
     return null;
   }
-  
+
+  if (invoice.type === 'pending') {
+    return (
+      <div className="pt-4">
+        <div className="flex justify-between bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg md:space-x-6">
+          <div className="self-center pl-8 font-bold">Status</div>
+          <div className="self-center justify-self-end pr-8">
+            {invoice.type === 'paid' ? <Paid /> : <Pending />}
+          </div>
+          <div className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+            Edit
+          </div>
+          <div
+            onClick={() => deleteInvoice()}
+            className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+          >
+            Delete
+          </div>
+          <div className="hidden md:block">
+            <MarkPaid
+              invoice={invoice}
+              token={user.token}
+              setInvoice={setInvoice}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="pt-4">
       <div className="flex justify-between bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg md:space-x-6">
         <div className="self-center pl-8 font-bold">Status</div>
-        <div className="self-center justify-self-end pr-8">
+        <div className="block md:hidden flex-grow"></div>
+        <div className="self-center">
           {invoice.type === 'paid' ? <Paid /> : <Pending />}
         </div>
+        <div className="hidden md:block flex-grow"></div>
         <div className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
           Edit
         </div>
-        <div
-          onClick={() => deleteInvoice()}
-          className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
-        >
-          Delete
-        </div>
-        <div className="hidden md:block">
-          <MarkPaid
-            invoice={invoice}
-            token={user.token}
-            setInvoice={setInvoice}
-          />
+        <div className="pr-8">
+          <div
+            onClick={() => deleteInvoice()}
+            className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+          >
+            Delete
+          </div>
         </div>
       </div>
     </div>
