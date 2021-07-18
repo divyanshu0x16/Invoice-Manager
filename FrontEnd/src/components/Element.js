@@ -131,7 +131,7 @@ const Element = () => {
                 <Address invoice={invoice} />
               </div>
             </div>
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 md:grid-cols-3">
               <div className="grid grid-rows-2">
                 <div>
                   <InvoiceDate invoice={invoice} />
@@ -143,11 +143,14 @@ const Element = () => {
               <div className="text-xs">
                 <BillTo invoice={invoice} />
               </div>
+              <div className="text-xs hidden md:block">
+                <SentTo invoice={invoice} />
+              </div>
             </div>
-            <div className="text-xs py-8">
+            <div className="block md:hidden text-xs py-8">
               <SentTo invoice={invoice} />
             </div>
-            <div className="pt-4">
+            <div className="pt-4 md:pt-12">
               <Item invoice={invoice} />
             </div>
           </div>
