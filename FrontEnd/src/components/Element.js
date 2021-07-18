@@ -136,21 +136,23 @@ const Element = () => {
         </div>
       </motion.div>
       <div className="mt-auto transition-colors duration-300 bg-all-lightbg dark:bg-all-darkbg dark:text-white">
-        <div className="flex flex-row-reverse space-x-4 px-8 bg-white dark:bg-navbar-darkbg py-4 md:hidden">
-          <MarkPaid
-            invoice={invoice}
-            token={user.token}
-            setInvoice={setInvoice}
-          />
-          <div></div>
-          <div
-            onClick={() => deleteInvoice()}
-            className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
-          >
-            Delete
-          </div>
-          <div className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
-            Edit
+        <div className="pt-8">
+          <div className="flex flex-row-reverse space-x-4 px-8 bg-white dark:bg-navbar-darkbg py-4 md:hidden">
+            <MarkPaid
+              invoice={invoice}
+              token={user.token}
+              setInvoice={setInvoice}
+            />
+            <div></div>
+            <div
+              onClick={() => deleteInvoice()}
+              className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+            >
+              Delete
+            </div>
+            <div className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+              Edit
+            </div>
           </div>
         </div>
       </div>

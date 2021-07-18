@@ -81,7 +81,7 @@ const Signup = () => {
       }
     }
   };
-  //TODO: Add Form Error message. Currently there's no message if user input's wrong message
+
   return (
     <motion.div
       className="flex flex-col justify-center items-center mx-auto min-h-screen"
