@@ -35,11 +35,13 @@ const MarkPaid = ({ invoice, token, setInvoice }) => {
   if (invoice.type === 'paid') return null;
   else {
     return (
-      <div
-        onClick={() => markAsPaid(invoice, token)}
-        className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
-      >
-        Mark As Paid
+      <div className="pr-8">
+        <div
+          onClick={() => markAsPaid(invoice, token)}
+          className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+        >
+          Mark As Paid
+        </div>
       </div>
     );
   }
@@ -84,7 +86,7 @@ const Element = () => {
         transition={{ duration: 1 }}
       >
         <Link to={'/'}>
-          <div className="lg:pt-24 md:pt-16 pt-8 text-sm hover:">
+          <div className="md:pt-16 pt-8 text-sm hover:">
             <div className="flex">
               <div className="self-center">
                 <ChevronLeftIcon className="text-all-bp h-8 w-8" />
@@ -96,10 +98,26 @@ const Element = () => {
           </div>
         </Link>
         <div className="pt-4">
-          <div className="grid grid-cols-2 bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg">
+          <div className="flex justify-between bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg md:space-x-6">
             <div className="self-center pl-8 font-bold">Status</div>
-            <div className="justify-self-end pr-8">
+            <div className="self-center justify-self-end pr-8">
               {invoice.type === 'paid' ? <Paid /> : <Pending />}
+            </div>
+            <div className="hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+              Edit
+            </div>
+            <div
+              onClick={() => deleteInvoice()}
+              className="hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+            >
+              Delete
+            </div>
+            <div className="hidden md:block">
+              <MarkPaid
+                invoice={invoice}
+                token={user.token}
+                setInvoice={setInvoice}
+              />
             </div>
           </div>
         </div>
