@@ -22,7 +22,7 @@ require('dotenv').config();
 
 const MarkPaid = ({ invoice, token, setInvoice }) => {
   if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   const markAsPaid = (invoice, token) => {
@@ -38,7 +38,7 @@ const MarkPaid = ({ invoice, token, setInvoice }) => {
       <div className="pr-8">
         <div
           onClick={() => markAsPaid(invoice, token)}
-          className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+          className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300 md:text-xs"
         >
           Mark As Paid
         </div>
@@ -78,13 +78,13 @@ const Element = () => {
   };
   console.log(invoice);
   return (
-    <div className="md:mx-auto flex flex-col min-h-screen md:min-h-full">
-      <motion.div
-        className="mx-6"
-        initial={{ scale: 1.0, opacity: 0.5 }}
-        animate={{ scale: 1.0, opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+    <motion.div
+      className="md:mx-auto flex flex-col min-h-screen md:min-h-full"
+      initial={{ scale: 1.0, opacity: 0.5 }}
+      animate={{ scale: 1.0, opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <div className="mx-6 md:w-element">
         <Link to={'/'}>
           <div className="md:pt-16 pt-8 text-sm hover:">
             <div className="flex">
@@ -103,12 +103,12 @@ const Element = () => {
             <div className="self-center justify-self-end pr-8">
               {invoice.type === 'paid' ? <Paid /> : <Pending />}
             </div>
-            <div className="hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+            <div className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
               Edit
             </div>
             <div
               onClick={() => deleteInvoice()}
-              className="hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+              className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
             >
               Delete
             </div>
@@ -158,7 +158,7 @@ const Element = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
       <div className="mt-auto transition-colors duration-300 bg-all-lightbg dark:bg-all-darkbg dark:text-white">
         <div className="pt-8">
           <div className="flex flex-row-reverse space-x-4 px-8 bg-white dark:bg-navbar-darkbg py-4 md:hidden">
@@ -180,7 +180,7 @@ const Element = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
