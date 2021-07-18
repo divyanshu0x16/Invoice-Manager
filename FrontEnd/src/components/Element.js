@@ -46,9 +46,9 @@ const Element = () => {
   //TODO: Implement footer dynamic button
   //TODO: Implement delete footer functionality
   return (
-    <>
+    <div className="md:mx-auto flex flex-col min-h-screen">
       <motion.div
-        className="mx-6 md:mx-auto"
+        className="mx-6"
         initial={{ scale: 1.0, opacity: 0.5 }}
         animate={{ scale: 1.0, opacity: 1 }}
         transition={{ duration: 1 }}
@@ -105,7 +105,7 @@ const Element = () => {
           </div>
         </div>
       </motion.div>
-      <footer className="transition-colors duration-300 bg-all-lightbg dark:bg-all-darkbg dark:text-white">
+      <div className="mt-auto transition-colors duration-300 bg-all-lightbg dark:bg-all-darkbg dark:text-white">
         <div className="flex flex-row-reverse space-x-4 px-8 bg-white dark:bg-navbar-darkbg py-4 md:hidden">
           <div className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
             Mark As Paid
@@ -118,8 +118,8 @@ const Element = () => {
             Edit
           </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </div>
   );
 };
 
