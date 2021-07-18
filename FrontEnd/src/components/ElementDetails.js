@@ -94,19 +94,23 @@ export const BillTo = ({ invoice }) => {
   );
 };
 
-const Remaining = ({ items }) => {
-  if (items.length === 1) return null;
-  const remItems = items.slice(1, items.length);
+const Items = ({ items }) => {
   return (
     <div>
-      {remItems.map((item, index) => {
+      {items.map((item, index) => {
         index += 1;
         return (
           <div
             key={index}
-            className="transform-colors duration-300 bg-item-lightbg font-bold dark:bg-item-darkbg text-sm grid grid-cols-2 py-4"
+            className="transform-colors duration-300 bg-item-lightbg font-bold dark:bg-item-darkbg text-sm grid grid-cols-2 md:grid-cols-4 py-4"
           >
             <div className="self-center pl-6">{item.name}</div>
+            <div className="justify-self-center hidden md:block self-center">
+              {item.quantity}
+            </div>
+            <div className="justify-self-center hidden md:block self-center">
+              {item.price}
+            </div>
             <div className="justify-self-end self-center pr-6">
               <i className="fas fa-rupee-sign"></i>
               {` ${item.price} x ${item.quantity}`}
@@ -130,14 +134,19 @@ export const Item = ({ invoice }) => {
 
   return (
     <div>
-      <div className="transform-colors duration-300 bg-item-lightbg font-bold dark:bg-item-darkbg text-sm rounded-t-lg grid grid-cols-2 py-4">
-        <div className="self-center pl-6">{invoice.items[0].name}</div>
-        <div className="justify-self-end self-center pr-6">
-          <i className="fas fa-rupee-sign"></i>
-          {` ${invoice.items[0].price} x ${invoice.items[0].quantity}`}
+      <div className="transform-colors duration-300 bg-item-lightbg font-bold dark:bg-item-darkbg text-sm rounded-t-lg grid grid-cols-2 md:grid-cols-4 py-4">
+        <div className="self-center pl-6 font-thin">Item Name</div>
+        <div className="justify-self-center hidden md:block self-center font-thin">
+          Quantity
+        </div>
+        <div className="justify-self-center hidden md:block self-center font-thin">
+          Price
+        </div>
+        <div className="justify-self-end self-center pr-6 font-thin">
+          Total
         </div>
       </div>
-      <Remaining items={invoice.items} />
+      <Items items={invoice.items} />
       <div className="transform-colors duration-300 bg-item-lighttotal font-bold dark:bg-item-darktotal text-white text-sm rounded-b-lg grid grid-cols-2 py-8">
         <div className="self-center pl-6">Amount Due</div>
         <div className="justify-self-end self-center pr-6 text-xl">

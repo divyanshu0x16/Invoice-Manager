@@ -76,7 +76,7 @@ const Element = () => {
       .deleteInvoice(user.token, invoiceId)
       .then(() => history.push('/'));
   };
-
+  console.log(invoice);
   return (
     <div className="md:mx-auto flex flex-col min-h-screen md:min-h-full">
       <motion.div
