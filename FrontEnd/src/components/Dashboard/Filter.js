@@ -17,7 +17,7 @@ const Filter = ({ onFilter }) => {
               Filter
               {open ? (
                 <ChevronUpIcon
-                  className="-mr-1 ml-2 h-5 w-5 text-all-bp"
+                  className="mr-1 ml-2 h-5 w-5 text-all-bp"
                   aria-hidden="true"
                 />
               ) : (

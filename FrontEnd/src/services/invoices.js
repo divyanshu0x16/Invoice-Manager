@@ -42,5 +42,20 @@ const modifyInvoice = async (token, invoice) => {
   }
 };
 
+const deleteInvoice = async (token, id) => {
+  const url = baseUrl + `/${id}`;
+  try {
+    const response = axios.delete(url, {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // eslint-disable-next-line
-export default { getInvoices, getSingleInvoice, modifyInvoice };
+export default { getInvoices, getSingleInvoice, modifyInvoice, deleteInvoice };

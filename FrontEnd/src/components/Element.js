@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
 import invoiceService from '../services/invoices';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeftIcon } from '@heroicons/react/solid';
 
@@ -27,7 +27,9 @@ const MarkPaid = ({ invoice, token, setInvoice }) => {
 
   const markAsPaid = (invoice, token) => {
     invoice.type = 'paid';
-    invoiceService.modifyInvoice(token, invoice).then((data) => setInvoice(data));
+    invoiceService
+      .modifyInvoice(token, invoice)
+      .then((data) => setInvoice(data));
   };
 
   if (invoice.type === 'paid') return null;
@@ -46,6 +48,7 @@ const MarkPaid = ({ invoice, token, setInvoice }) => {
 const Element = () => {
   const invoiceId = useLocation().pathname.substring(9);
   const [invoice, setInvoice] = useState({});
+  const history = useHistory();
   const user = JSON.parse(localStorage.getItem('userDetails'));
 
   useEffect(() => {
@@ -65,11 +68,15 @@ const Element = () => {
       localStorage.clear();
     }
   });
-  //TODO: Make footer stick to bottom
-  //TODO: Implement footer dynamic button
-  //TODO: Implement delete footer functionality
+
+  const deleteInvoice = () => {
+    invoiceService
+      .deleteInvoice(user.token, invoiceId)
+      .then(() => history.push('/'));
+  };
+
   return (
-    <div className="md:mx-auto flex flex-col min-h-screen">
+    <div className="md:mx-auto flex flex-col min-h-screen md:min-h-full">
       <motion.div
         className="mx-6"
         initial={{ scale: 1.0, opacity: 0.5 }}
@@ -136,7 +143,10 @@ const Element = () => {
             setInvoice={setInvoice}
           />
           <div></div>
-          <div className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
+          <div
+            onClick={() => deleteInvoice()}
+            className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+          >
             Delete
           </div>
           <div className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
