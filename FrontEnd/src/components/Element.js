@@ -47,6 +47,39 @@ const MarkPaid = ({ invoice, token, setInvoice }) => {
   }
 };
 
+const ElementHeader = ({ deleteInvoice, invoice, user, setInvoice }) => {
+  if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
+    return null;
+  }
+  
+  return (
+    <div className="pt-4">
+      <div className="flex justify-between bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg md:space-x-6">
+        <div className="self-center pl-8 font-bold">Status</div>
+        <div className="self-center justify-self-end pr-8">
+          {invoice.type === 'paid' ? <Paid /> : <Pending />}
+        </div>
+        <div className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+          Edit
+        </div>
+        <div
+          onClick={() => deleteInvoice()}
+          className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+        >
+          Delete
+        </div>
+        <div className="hidden md:block">
+          <MarkPaid
+            invoice={invoice}
+            token={user.token}
+            setInvoice={setInvoice}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Element = () => {
   const invoiceId = useLocation().pathname.substring(9);
   const [invoice, setInvoice] = useState({});
@@ -97,30 +130,12 @@ const Element = () => {
             </div>
           </div>
         </Link>
-        <div className="pt-4">
-          <div className="flex justify-between bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg md:space-x-6">
-            <div className="self-center pl-8 font-bold">Status</div>
-            <div className="self-center justify-self-end pr-8">
-              {invoice.type === 'paid' ? <Paid /> : <Pending />}
-            </div>
-            <div className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
-              Edit
-            </div>
-            <div
-              onClick={() => deleteInvoice()}
-              className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
-            >
-              Delete
-            </div>
-            <div className="hidden md:block">
-              <MarkPaid
-                invoice={invoice}
-                token={user.token}
-                setInvoice={setInvoice}
-              />
-            </div>
-          </div>
-        </div>
+        <ElementHeader
+          deleteInvoice={deleteInvoice}
+          invoice={invoice}
+          user={user}
+          setInvoice={setInvoice}
+        />
         <div className="pt-4">
           <div className="transform-colors duration-300 bg-white dark:bg-navbar-darkbg rounded-lg px-8 py-4 shadow-lg">
             <div className="text-xs font-normal md:flex md:flex-row md:justify-between md:pb-10">
