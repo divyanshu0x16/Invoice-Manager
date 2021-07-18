@@ -123,11 +123,14 @@ const Element = () => {
         </div>
         <div className="pt-4">
           <div className="transform-colors duration-300 bg-white dark:bg-navbar-darkbg rounded-lg px-8 py-4 shadow-lg">
-            <div className="text-xs font-normal">
+            <div className="text-xs font-normal md:flex md:flex-row md:justify-between md:pb-10">
               <Description invoice={invoice} />
+              <div className="hidden md:block">
+                <Address invoice={invoice} />
+              </div>
             </div>
             <div>
-              <div className="py-6 text-xs">
+              <div className="py-6 text-xs block md:hidden">
                 <Address invoice={invoice} />
               </div>
             </div>
