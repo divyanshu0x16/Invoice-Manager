@@ -56,6 +56,12 @@ router.post('/', async (request, response) => {
 router.put('/:id', async (request, response) => {
   const invoice = request.body;
 
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+
+  if (!request.token || !decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' });
+  }
+
   const updatedInvoice = await Invoice.findByIdAndUpdate(
     request.params.id,
     invoice,

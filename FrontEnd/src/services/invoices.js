@@ -28,5 +28,19 @@ const getSingleInvoice = async (token, id) => {
   }
 };
 
+const modifyInvoice = async (token, invoice) => {
+  const url = baseUrl + `/${invoice.id}`;
+  try {
+    const response = await axios.put(url, invoice, {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // eslint-disable-next-line
-export default { getInvoices, getSingleInvoice };
+export default { getInvoices, getSingleInvoice, modifyInvoice };

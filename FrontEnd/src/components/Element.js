@@ -20,15 +20,23 @@ import {
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const MarkPaid = ({ invoice }) => {
+const MarkPaid = ({ invoice, token, setInvoice }) => {
   if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
     return <div>Loading...</div>;
   }
 
+  const markAsPaid = (invoice, token) => {
+    invoice.type = 'paid';
+    invoiceService.modifyInvoice(token, invoice).then((data) => setInvoice(data));
+  };
+
   if (invoice.type === 'paid') return null;
   else {
     return (
-      <div className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
+      <div
+        onClick={() => markAsPaid(invoice, token)}
+        className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+      >
         Mark As Paid
       </div>
     );
@@ -122,7 +130,11 @@ const Element = () => {
       </motion.div>
       <div className="mt-auto transition-colors duration-300 bg-all-lightbg dark:bg-all-darkbg dark:text-white">
         <div className="flex flex-row-reverse space-x-4 px-8 bg-white dark:bg-navbar-darkbg py-4 md:hidden">
-          <MarkPaid invoice={invoice} />
+          <MarkPaid
+            invoice={invoice}
+            token={user.token}
+            setInvoice={setInvoice}
+          />
           <div></div>
           <div className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300">
             Delete
