@@ -79,9 +79,9 @@ const Form = ({ setForm }) => {
               </div>
             </div>
             <div>
-              <div className="text-xs">Payment Terms</div>
+              <div className="text-xs">Total Days Till Payment</div>
               <div className="mt-3 mr-10 text-xs">
-                <input className={inputClass} />
+                <input className={inputClass} type="number" />
               </div>
             </div>
           </div>
