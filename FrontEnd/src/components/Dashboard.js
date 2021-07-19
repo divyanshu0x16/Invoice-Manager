@@ -12,6 +12,9 @@ require('dotenv').config();
 
 const Dashboard = () => {
   const [invoices, setInvoices] = useState([]);
+  const [form, setForm] = useState(
+    'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
+  );
   const user = JSON.parse(localStorage.getItem('userDetails'));
   const allInvoices = useRef(null);
 
@@ -49,9 +52,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <NewInvoiceForm />
+      <NewInvoiceForm form={form} setForm={setForm}/>
       <div className="mx-6 md:mx-auto min-h-screen">
-        <Header invoices={allInvoices.current} applyFilter={applyFilter} />
+        <Header
+          invoices={allInvoices.current}
+          applyFilter={applyFilter}
+          setForm={setForm}
+        />
         <motion.div
           className="pt-8"
           initial={{ opacity: 0 }}
