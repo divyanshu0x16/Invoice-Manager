@@ -6,7 +6,7 @@ const Navbar = ({ modalToggle }) => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   return (
-    <div className="md:rounded-r-2xl h-16 md:min-h-screen bg-navbar-bg dark:bg-navbar-darkbg">
+    <div className="z-20 md:rounded-r-2xl h-16 md:min-h-screen bg-navbar-bg dark:bg-navbar-darkbg">
       <div className="w-full md:w-24">
         <div className="grid md:grid-flow-row grid-flow-col md:min-h-screen">
           <div className="bg-logo-light rounded-r-2xl md:h-20 h-16 w-20 md:w-full">
@@ -27,7 +27,7 @@ const Navbar = ({ modalToggle }) => {
           </div>
           <div className="place-self-end">
             <div className="grid grid-flow-col md:grid-flow-row">
-              <div className="mt-1 md:mt-0 md:pl-8">
+              <div className="z-20 mt-1 md:mt-0 md:pl-8">
                 {theme === 'dark' ? (
                   <div
                     onClick={() =>
@@ -62,7 +62,7 @@ const Navbar = ({ modalToggle }) => {
                   </div>
                 )}
               </div>
-              <div className="cursor-pointer mx-5 mb-3 md:mx-7 md:my-8">
+              <div className="z-20 cursor-pointer mx-5 mb-3 md:mx-7 md:my-8">
                 <img
                   src={user}
                   alt="user"
