@@ -50,7 +50,7 @@ const Dashboard = () => {
   return (
     <>
       <NewInvoiceForm />
-      <div className="mx-6 md:mx-auto">
+      <div className="mx-6 md:mx-auto min-h-screen">
         <Header invoices={allInvoices.current} applyFilter={applyFilter} />
         <motion.div
           className="pt-8"
