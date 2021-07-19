@@ -56,6 +56,7 @@ module.exports = {
       gray: colors.trueGray,
       red: colors.red,
       green: colors.emerald,
+      blue: colors.blue
     },
   },
   screens: {
