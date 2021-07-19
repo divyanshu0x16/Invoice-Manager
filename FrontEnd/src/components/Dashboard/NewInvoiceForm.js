@@ -23,7 +23,7 @@ const HalfEntryFields = ({ inputClass, titleOne, titleTwo }) => {
       <div>
         <div className="text-xs">{titleTwo}</div>
         <div className="mt-3 mr-10 text-xs">
-          <input className={inputClass}/>
+          <input className={inputClass} />
         </div>
       </div>
     </div>
@@ -34,6 +34,7 @@ const Form = ({ setForm }) => {
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
+  //TODO: Work on how to add item list
   return (
     <div className="md:w-element flex flex-col justify-between max-h-screen">
       <div className="mx-8 mt-8 overflow-y-scroll">
@@ -60,7 +61,25 @@ const Form = ({ setForm }) => {
             titleTwo="Post Code"
           />
           <FullEntryField inputClass={inputClass} title="Country" />
+          <div className="grid grid-cols-2 mt-4 text-xs">
+            <div className>
+              <div className="text-xs">Invoice Date</div>
+              <div className="mt-3 mr-6">
+                <input className={inputClass} />
+              </div>
+            </div>
+            <div>
+              <div className="text-xs">Payment Terms</div>
+              <div className="mt-3 mr-10 text-xs">
+                <input className={inputClass} />
+              </div>
+            </div>
+          </div>
           <FullEntryField inputClass={inputClass} title="Description" />
+        </section>
+
+        <section>
+          <div className="mt-8 font-bold text-2xl">Item List</div>
         </section>
       </div>
       <div className="sticky mx-8 flex justify-between pb-6 mt-6">
