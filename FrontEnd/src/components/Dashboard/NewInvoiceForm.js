@@ -23,7 +23,7 @@ const HalfEntryFields = ({ inputClass, titleOne, titleTwo }) => {
       <div>
         <div className="text-xs">{titleTwo}</div>
         <div className="mt-3 mr-10 text-xs">
-          <input className={inputClass} type="number" />
+          <input className={inputClass}/>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@ const Form = ({ setForm }) => {
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
   return (
-    <div className="md:w-element flex flex-col justify-between min-h-screen">
+    <div className="md:w-element flex flex-col justify-between max-h-screen">
       <div className="mx-8 mt-8 overflow-y-scroll">
         <div className="text-3xl font-bold">Create Invoice</div>
         <section className="mt-6">
@@ -63,7 +63,7 @@ const Form = ({ setForm }) => {
           <FullEntryField inputClass={inputClass} title="Description" />
         </section>
       </div>
-      <div className="sticky mx-8 flex justify-between pb-8">
+      <div className="sticky mx-8 flex justify-between pb-6 mt-6">
         <div
           onClick={() =>
             setForm(
