@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 const FullEntryField = ({ inputClass, title }) => {
   return (
@@ -31,6 +34,8 @@ const HalfEntryFields = ({ inputClass, titleOne, titleTwo }) => {
 };
 
 const Form = ({ setForm }) => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
@@ -64,8 +69,13 @@ const Form = ({ setForm }) => {
           <div className="grid grid-cols-2 mt-4 text-xs">
             <div className>
               <div className="text-xs">Invoice Date</div>
-              <div className="mt-3 mr-6">
-                <input className={inputClass} />
+              <div className="mr-6 pt-3">
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  dateFormat="dd/MM/yyyy"
+                  className="w-full h-10 text-xs font-bold transition-colors duration-300 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none"
+                />
               </div>
             </div>
             <div>
