@@ -90,6 +90,11 @@ const Form = ({ setForm }) => {
 
         <section>
           <div className="mt-8 font-bold text-2xl">Item List</div>
+          <div className="mt-6 mb-4 mr-10 ml-4">
+            <div className="shadow-lg text-center cursor-pointer self-center bg-item-lightbg font-bold text-xs dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+              + Add New Item
+            </div>
+          </div>
         </section>
       </div>
       <div className="sticky mx-8 flex justify-between pb-6 mt-6">
