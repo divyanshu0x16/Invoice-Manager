@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
 const FullEntryField = ({ inputClass, title }) => {
@@ -17,7 +16,7 @@ const FullEntryField = ({ inputClass, title }) => {
 const HalfEntryFields = ({ inputClass, titleOne, titleTwo }) => {
   return (
     <div className="grid grid-cols-2 mt-4 text-xs">
-      <div className>
+      <div>
         <div className="text-xs">{titleOne}</div>
         <div className="mt-3 mr-6">
           <input className={inputClass} />
@@ -33,8 +32,50 @@ const HalfEntryFields = ({ inputClass, titleOne, titleTwo }) => {
   );
 };
 
+const deleteItem = (index, items) => {
+  let toReturn = [];
+  for (let i = 0; i < items.length; i++) {
+    if (i !== index) toReturn.push(items[i]);
+  }
+
+  return toReturn;
+};
+
+const ItemForm = ({ inputClass, index, items, setItems }) => {
+  return (
+    <div>
+      <FullEntryField inputClass={inputClass} title="Item Name" />
+      <div className="grid grid-cols-3 mt-4">
+        <div>
+          <div className="text-xs">Qty.</div>
+          <div className="mt-3 mr-10 text-xs">
+            <input className={inputClass} />
+          </div>
+        </div>
+        <div>
+          <div className="text-xs">Price</div>
+          <div className="mt-3 mr-10 text-xs">
+            <input className={inputClass} />
+          </div>
+        </div>
+        <div>
+          <div className="text-xs">Total</div>
+          <div className="mt-3 mr-10 text-sm font-bold flex justify-between">
+            <div className="mt-3">3</div>
+            <i
+              onClick={() => setItems(deleteItem(index, items))}
+              className="cursor-pointer self-center mt-2 mr-4 fa-lg fas fa-trash duration-200 hover:text-red-500"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Form = ({ setForm }) => {
   const [startDate, setStartDate] = useState(new Date());
+  const [items, setItems] = useState([]);
 
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
@@ -90,8 +131,24 @@ const Form = ({ setForm }) => {
 
         <section>
           <div className="mt-8 font-bold text-2xl">Item List</div>
+          {items.map((item, index) => {
+            return (
+              <ItemForm
+                inputClass={inputClass}
+                key={index}
+                items={items}
+                index={index}
+                setItems={setItems}
+              />
+            );
+          })}
           <div className="mt-6 mb-4 mr-10 ml-4">
-            <div className="shadow-lg text-center cursor-pointer self-center bg-item-lightbg font-bold text-xs dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+            <div
+              onClick={() => {
+                setItems(items.concat(1));
+              }}
+              className="shadow-lg text-center cursor-pointer self-center bg-item-lightbg font-bold text-xs dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+            >
               + Add New Item
             </div>
           </div>
