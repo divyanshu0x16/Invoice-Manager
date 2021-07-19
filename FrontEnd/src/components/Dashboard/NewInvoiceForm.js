@@ -17,7 +17,7 @@ const Form = ({ setForm }) => {
         >
           Discard
         </div>
-        <div className="shadow-lg cursor-pointer self-center transform hover:scale-105 duration-300 bg-all-bp text-white font-bold rounded-2xl">
+        <div className="shadow-lg cursor-pointer self-center transform hover:scale-105 duration-300 bg-all-bp text-white font-bold rounded-3xl">
           <div className="py-4 px-4">Save</div>
         </div>
       </div>
