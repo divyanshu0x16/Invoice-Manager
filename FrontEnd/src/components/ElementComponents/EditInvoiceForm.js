@@ -193,7 +193,8 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    toDate.setDate(toDate.getDate() + parseInt(daysTill));
+    //I have no idea why this works
+    toDate.setDate(startDate.getDate() + parseInt(daysTill));
     setToDate(toDate);
 
     if (items.length === 0) {
@@ -388,19 +389,26 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
         <div className="sticky mr-8 flex justify-between pb-6 mt-6">
           <div
             onClick={() => {
-              setToCity(invoice.to.city);
+              setLoaded(true);
+              setItems(invoice.items);
+              //Bill To
               setToStreet(invoice.to.address);
-              setToPostcode(invoice.to.postcode);
+              setToCity(invoice.to.city);
               setCountry(invoice.to.country);
+              setToPostcode(invoice.to.postcode);
+              //Client
               setClientName(invoice.client.name);
               setClientMail(invoice.client.email);
-              setClientStreet(invoice.client.street);
+              setClientStreet(invoice.client.address);
               setClientCity(invoice.client.city);
-              setClientCountry(invoice.client.country);
-              setDaysTill(0);
-              setDescription(invoice.client.description);
               setClientPostcode(invoice.client.postcode);
-              setItems(invoice.items);
+              setClientCountry(invoice.client.country);
+              //Extra
+              setDescription(invoice.client.description);
+              setId(invoice.id);
+              setDaysTill(invoice.client.terms);
+              setLoaded(true);
+              setStartDate(new Date(invoice.date));
               setError(false);
               setForm(
                 'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
