@@ -14,6 +14,19 @@ const getInvoices = async (token) => {
   }
 };
 
+const createInvoice = async (token, invoie) => {
+  try {
+    const response = await axios.post(baseUrl, invoie, {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getSingleInvoice = async (token, id) => {
   const url = baseUrl + `/${id}`;
   try {
@@ -58,4 +71,10 @@ const deleteInvoice = async (token, id) => {
 };
 
 // eslint-disable-next-line
-export default { getInvoices, getSingleInvoice, modifyInvoice, deleteInvoice };
+export default {
+  getInvoices,
+  getSingleInvoice,
+  modifyInvoice,
+  deleteInvoice,
+  createInvoice,
+};

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import invoiceService from '../../services/invoices';
 
 const FullEntryField = ({ inputClass, title, value, setValue, name }) => {
   return (
