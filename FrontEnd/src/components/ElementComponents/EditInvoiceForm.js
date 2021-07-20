@@ -241,6 +241,9 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
 
     const data = await invoiceService.modifyInvoice(token, invoice);
     setInvoice(data);
+    setForm(
+      'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
+    );
   };
 
   return (
