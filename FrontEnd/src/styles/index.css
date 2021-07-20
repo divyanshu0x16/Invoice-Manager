@@ -9,5 +9,8 @@
         .w-element {
             width: 39rem;
         }
+        .w-element-large {
+            width: 50rem;
+        }
     }
-}
+    }

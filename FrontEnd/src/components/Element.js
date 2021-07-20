@@ -57,9 +57,11 @@ const ElementHeader = ({ deleteInvoice, invoice, user, setInvoice }) => {
       <div className="pt-4">
         <div className="flex justify-between bg-white dark:bg-navbar-darkbg py-4 rounded-lg shadow-lg md:space-x-6">
           <div className="self-center pl-8 font-bold">Status</div>
-          <div className="self-center justify-self-end pr-8">
+          <div className="block md:hidden flex-grow"></div>
+          <div className="self-center mr-8 md:mr-0">
             {invoice.type === 'paid' ? <Paid /> : <Pending />}
           </div>
+          <div className="hidden md:block flex-grow"></div>
           <div className="md:text-xs hidden md:block shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
             Edit
           </div>
@@ -142,7 +144,7 @@ const Element = () => {
       animate={{ scale: 1.0, opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <div className="mx-6 md:w-element">
+      <div className="mx-6 md:w-element lg:w-element-large">
         <Link to={'/'}>
           <div className="md:pt-16 pt-8 text-sm hover:">
             <div className="flex">
