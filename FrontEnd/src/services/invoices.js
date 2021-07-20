@@ -43,14 +43,13 @@ const getSingleInvoice = async (token, id) => {
 
 const modifyInvoice = async (token, invoice) => {
   const url = baseUrl + `/${invoice.id}`;
-  console.log(invoice.id);
   try {
     const response = await axios.put(url, invoice, {
       headers: {
         authorization: `bearer ${token}`,
       },
     });
-    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
