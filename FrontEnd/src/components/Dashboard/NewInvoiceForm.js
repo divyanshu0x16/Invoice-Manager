@@ -72,14 +72,30 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
 
+  const handleChange = () => {
+    items[index].name = name;
+    items[index].quantity = quantity;
+    items[index].price = price;
+    setItems(items);
+  };
+
   return (
     <div>
-      <FullEntryField
-        inputClass={inputClass}
-        title="Item Name"
-        value={name}
-        setName={setName}
-      />
+      <div className="mt-4">
+        <div className="text-xs">Item Name</div>
+        <div className="mt-3 mr-10">
+          <input
+            type="text"
+            className={inputClass}
+            value={name}
+            name="name"
+            onChange={({ target }) => {
+              setName(target.value);
+              handleChange();
+            }}
+          />
+        </div>
+      </div>
       <div className="grid grid-cols-3 mt-4">
         <div>
           <div className="text-xs">Qty.</div>
@@ -87,7 +103,10 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
             <input
               className={inputClass}
               value={quantity}
-              onChange={({ target }) => setQuantity(target.value)}
+              onChange={({ target }) => {
+                setQuantity(target.value);
+                handleChange();
+              }}
             />
           </div>
         </div>
@@ -97,7 +116,10 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
             <input
               className={inputClass}
               value={price}
-              onChange={({ target }) => setPrice(target.value)}
+              onChange={({ target }) => {
+                setPrice(target.value);
+                handleChange();
+              }}
             />
           </div>
         </div>
@@ -137,6 +159,7 @@ const Form = ({ setForm }) => {
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
+  console.log(items);
   return (
     <div className="md:w-element flex flex-col justify-between max-h-screen">
       <div className="mx-8 mt-8 overflow-y-scroll">
@@ -261,7 +284,7 @@ const Form = ({ setForm }) => {
           <div className="mt-6 mb-4 mr-10 ml-4">
             <div
               onClick={() => {
-                setItems(items.concat(1));
+                setItems(items.concat({}));
               }}
               className="shadow-lg text-center cursor-pointer self-center bg-item-lightbg font-bold text-xs dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
             >
