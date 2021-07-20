@@ -6,7 +6,7 @@ const Navbar = ({ modalToggle }) => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   return (
-    <div className="z-20 md:rounded-r-2xl h-16 md:min-h-screen bg-navbar-bg dark:bg-navbar-darkbg">
+    <div className="sticky top-0 z-20 md:rounded-r-2xl h-16 md:min-h-screen bg-navbar-bg dark:bg-navbar-darkbg">
       <div className="w-full md:w-24">
         <div className="grid md:grid-flow-row grid-flow-col md:min-h-screen">
           <div className="bg-logo-light rounded-r-2xl md:h-20 h-16 w-20 md:w-full">
