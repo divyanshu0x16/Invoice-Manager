@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const baseUrl = 'http://localhost:3001/api/invoices';
+const baseUrl = '/api/invoices';
 
 const getInvoices = async (token) => {
   try {

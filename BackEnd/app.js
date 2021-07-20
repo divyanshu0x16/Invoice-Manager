@@ -31,6 +31,7 @@ mongoose.set('useFindAndModify', false);
 app.use(cors());
 app.use(express.json());
 app.use(middleware.tokenExtractor);
+app.use(express.static('build'));
 
 app.use('/api/invoices', invoiceRouter);
 app.use('/api/login', loginRouter);

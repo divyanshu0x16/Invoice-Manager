@@ -30,6 +30,7 @@
     "eject": "react-scripts eject",
     "build-css": "npx tailwindcss-cli@latest -i src/styles/index.css -o src/styles/tailwind.css"
   },
+  "proxy": "http://localhost:3000",
   "eslintConfig": {
     "extends": [
       "react-app",
