@@ -77,7 +77,6 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
     items[index].name = name;
     items[index].quantity = quantity;
     items[index].price = price;
-    console.log(items);
     setItems(items);
   };
 
@@ -209,7 +208,6 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
     };
 
     await invoiceService.createInvoice(token, invoice).then((data) => {
-      console.log(data);
       setInvoices(invoices.concat(data));
       setToCity('');
       setToStreet('');
