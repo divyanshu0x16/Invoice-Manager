@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import invoiceService from '../../services/invoices';
@@ -140,27 +140,6 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
 };
 
 const Form = ({ setForm, token, setInvoice, invoice }) => {
-  /*
-  const [startDate, setStartDate] = useState(new Date());
-  const [toDate, setToDate] = useState(new Date());
-  const [items, setItems] = useState(invoice.items);
-  //Bill To
-  const [toStreet, setToStreet] = useState(invoice.to.address);
-  const [toCity, setToCity] = useState(invoice.to.city);
-  const [toCountry, setCountry] = useState(invoice.to.country);
-  const [toPostcode, setToPostcode] = useState(invoice.to.postcode);
-  //Client
-  const [clientName, setClientName] = useState(invoice.client.name);
-  const [clientMail, setClientMail] = useState(invoice.client.email);
-  const [clientStreet, setClientStreet] = useState(invoice.client.address);
-  const [clientCity, setClientCity] = useState(invoice.client.city);
-  const [clientPostcode, setClientPostcode] = useState(invoice.client.postcode);
-  const [clientCountry, setClientCountry] = useState(invoice.client.country);
-  const [description, setDescription] = useState(invoice.client.description);
-  const [daysTill, setDaysTill] = useState(0);
-  //Error
-  const [error, setError] = useState(false);*/
-
   const [startDate, setStartDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const [items, setItems] = useState([]);
@@ -180,6 +159,29 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
   const [daysTill, setDaysTill] = useState(0);
   //Error
   const [error, setError] = useState(false);
+
+  const [isLoaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!isLoaded && Object.keys(invoice).length !== 0) {
+      setLoaded(true);
+      setItems(invoice.items);
+      //Bill To
+      setToStreet(invoice.to.address);
+      setToCity(invoice.to.city);
+      setCountry(invoice.to.country);
+      setToPostcode(invoice.to.postcode);
+      //Client
+      setClientName(invoice.client.name);
+      setClientMail(invoice.client.email);
+      setClientStreet(invoice.client.address);
+      setClientCity(invoice.client.city);
+      setClientPostcode(invoice.client.postcode);
+      setClientCountry(invoice.client.country);
+      setDescription(invoice.client.description);
+      setLoaded(true);
+    }
+  }, [invoice]);
 
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
