@@ -156,12 +156,18 @@ const Form = ({ setForm }) => {
   const [clientCountry, setClientCountry] = useState('');
   const [description, setDescription] = useState('');
   const [daysTill, setDaysTill] = useState(0);
+  //Error
+  const [error, setError] = useState(false);
 
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (items.length === 0) {
+      setError(true);
+    }
   };
 
   console.log(items);
@@ -298,6 +304,12 @@ const Form = ({ setForm }) => {
               </div>
             </div>
           </section>
+
+          {error === true ? (
+            <section className="text-xs text-red-400 font-bold">
+              <div> - Minimum one item is needed</div>
+            </section>
+          ) : null}
         </div>
         <div className="sticky mr-8 flex justify-between pb-6 mt-6">
           <div
