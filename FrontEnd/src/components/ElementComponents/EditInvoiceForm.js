@@ -179,9 +179,12 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
       setClientCity(invoice.client.city);
       setClientPostcode(invoice.client.postcode);
       setClientCountry(invoice.client.country);
+      //Extra
       setDescription(invoice.client.description);
       setId(invoice.id);
+      setDaysTill(invoice.client.terms);
       setLoaded(true);
+      setStartDate(new Date(invoice.date));
     }
   }, [invoice]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -191,6 +194,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     toDate.setDate(toDate.getDate() + parseInt(daysTill));
+    setToDate(toDate);
 
     if (items.length === 0) {
       setError(true);
@@ -229,6 +233,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
         postcode: clientPostcode,
         description,
         date: toDate,
+        terms: daysTill,
       },
       id,
     };

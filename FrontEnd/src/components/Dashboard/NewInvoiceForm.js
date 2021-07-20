@@ -204,6 +204,7 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
         postcode: clientPostcode,
         description,
         date: toDate,
+        terms: daysTill,
       },
     };
 
