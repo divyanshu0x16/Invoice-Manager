@@ -68,26 +68,43 @@ const deleteItem = (index, items) => {
 };
 
 const ItemForm = ({ inputClass, index, items, setItems }) => {
+  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+
   return (
     <div>
-      <FullEntryField inputClass={inputClass} title="Item Name" />
+      <FullEntryField
+        inputClass={inputClass}
+        title="Item Name"
+        value={name}
+        setName={setName}
+      />
       <div className="grid grid-cols-3 mt-4">
         <div>
           <div className="text-xs">Qty.</div>
           <div className="mt-3 mr-10 text-xs">
-            <input className={inputClass} />
+            <input
+              className={inputClass}
+              value={quantity}
+              onChange={({ target }) => setQuantity(target.value)}
+            />
           </div>
         </div>
         <div>
           <div className="text-xs">Price</div>
           <div className="mt-3 mr-10 text-xs">
-            <input className={inputClass} />
+            <input
+              className={inputClass}
+              value={price}
+              onChange={({ target }) => setPrice(target.value)}
+            />
           </div>
         </div>
         <div>
           <div className="text-xs">Total</div>
           <div className="mt-3 mr-10 text-sm font-bold flex justify-between">
-            <div className="mt-3">3</div>
+            <div className="mt-3">{quantity * price}</div>
             <i
               onClick={() => setItems(deleteItem(index, items))}
               className="cursor-pointer self-center mt-2 mr-4 fa-lg fas fa-trash duration-200 hover:text-red-500"
@@ -268,6 +285,7 @@ const Form = ({ setForm }) => {
             setDaysTill(0);
             setDescription('');
             setClientPostcode('');
+            setItems([]);
             setForm(
               'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
             );
