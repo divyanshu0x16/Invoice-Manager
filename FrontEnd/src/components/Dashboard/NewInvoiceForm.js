@@ -139,7 +139,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
   );
 };
 
-const Form = ({ setForm }) => {
+const Form = ({ setForm, token, setInvoices, invoices }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [items, setItems] = useState([]);
   //Bill To
@@ -182,13 +182,50 @@ const Form = ({ setForm }) => {
       setError(true);
       return;
     }
-    
+
     const invoice = {
       date: startDate,
       type: 'pending',
       items,
+      to: {
+        address: toStreet,
+        city: toCity,
+        country: toCountry,
+        postcode: toPostcode,
+      },
+      client: {
+        name: clientName,
+        email: clientMail,
+        address: clientStreet,
+        city: clientCity,
+        country: clientCountry,
+        postcode: clientPostcode,
+        description,
+        date: startDate.setDate(startDate.getDate() + daysTill),
+      },
     };
-    console.log(invoice);
+
+    await invoiceService.createInvoice(token, invoice).then((data) => {
+      console.log(data);
+      setInvoices(invoices.concat(data));
+      setToCity('');
+      setToStreet('');
+      setToPostcode('');
+      setCountry('');
+      setClientName('');
+      setClientMail('');
+      setClientStreet('');
+      setClientCity('');
+      setClientCountry('');
+      setDaysTill(0);
+      setDescription('');
+      setClientPostcode('');
+      setItems([]);
+      setError(false);
+      setForm(
+        'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
+      );
+    });
   };
 
   return (
@@ -368,12 +405,17 @@ const Form = ({ setForm }) => {
   );
 };
 
-const NewInvoiceForm = ({ form, setForm }) => {
+const NewInvoiceForm = ({ form, setForm, token, setInvoices, invoices }) => {
   return (
     <div className={form}>
       <div className="flex mt-16 md:mt-0">
         <div className="flex-grow md:flex-grow-0 transition-colors duration-300  md:ml-24 bg-all-lightbg dark:bg-all-darkbg dark:text-white w-max min-h-screen">
-          <Form setForm={setForm} />
+          <Form
+            setForm={setForm}
+            token={token}
+            setInvoices={setInvoices}
+            invoices={invoices}
+          />
         </div>
         <div
           onClick={() =>

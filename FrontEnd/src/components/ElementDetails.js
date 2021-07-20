@@ -73,7 +73,9 @@ export const SentTo = ({ invoice }) => {
   return (
     <div>
       <div>Sent To</div>
-      <div className="font-bold text-sm">{invoice.client.email}</div>
+      <div className="font-bold text-xs">
+        {invoice.client.email}
+      </div>
     </div>
   );
 };
@@ -142,9 +144,7 @@ export const Item = ({ invoice }) => {
         <div className="justify-self-center hidden md:block self-center font-thin">
           Price
         </div>
-        <div className="justify-self-end self-center pr-6 font-thin">
-          Total
-        </div>
+        <div className="justify-self-end self-center pr-6 font-thin">Total</div>
       </div>
       <Items items={invoice.items} />
       <div className="transform-colors duration-300 bg-item-lighttotal font-bold dark:bg-item-darktotal text-white text-sm rounded-b-lg grid grid-cols-2 py-8">

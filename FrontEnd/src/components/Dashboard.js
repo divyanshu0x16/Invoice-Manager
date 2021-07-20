@@ -52,7 +52,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <NewInvoiceForm form={form} setForm={setForm} />
+      <NewInvoiceForm
+        form={form}
+        setForm={setForm}
+        token={user.token}
+        setInvoices={setInvoices}
+        invoices={invoices}
+      />
       <div className="mx-6 md:mx-auto min-h-screen">
         <Header
           invoices={allInvoices.current}
@@ -65,7 +71,7 @@ const Dashboard = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          {invoices.map((invoice) => {
+          {invoices.map((invoice, index) => {
             let amount = 0;
             invoice.items.forEach((item) => {
               amount += item.price * item.quantity;
@@ -75,7 +81,7 @@ const Dashboard = () => {
 
             if (invoice.type === 'pending') {
               return (
-                <Link to={path} key={invoice.id}>
+                <Link to={path} key={index}>
                   <Pending
                     name={invoice.client.name}
                     amount={amount}
