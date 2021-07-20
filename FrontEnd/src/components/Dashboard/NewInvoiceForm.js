@@ -2,30 +2,56 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const FullEntryField = ({ inputClass, title }) => {
+const FullEntryField = ({ inputClass, title, value, setValue, name }) => {
   return (
     <div className="mt-4">
       <div className="text-xs">{title}</div>
       <div className="mt-3 mr-10">
-        <input className={inputClass} />
+        <input
+          type="text"
+          className={inputClass}
+          value={value}
+          name={name}
+          onChange={({ target }) => setValue(target.value)}
+        />
       </div>
     </div>
   );
 };
 
-const HalfEntryFields = ({ inputClass, titleOne, titleTwo }) => {
+const HalfEntryFields = ({
+  inputClass,
+  titleOne,
+  titleTwo,
+  valueOne,
+  valueTwo,
+  setValueOne,
+  setValueTwo,
+  nameOne,
+  nameTwo,
+}) => {
   return (
     <div className="grid grid-cols-2 mt-4 text-xs">
       <div>
         <div className="text-xs">{titleOne}</div>
         <div className="mt-3 mr-6">
-          <input className={inputClass} />
+          <input
+            className={inputClass}
+            value={valueOne}
+            name={nameOne}
+            onChange={({ target }) => setValueOne(target.value)}
+          />
         </div>
       </div>
       <div>
         <div className="text-xs">{titleTwo}</div>
         <div className="mt-3 mr-10 text-xs">
-          <input className={inputClass} />
+          <input
+            className={inputClass}
+            value={valueTwo}
+            name={nameTwo}
+            onChange={({ target }) => setValueTwo(target.value)}
+          />
         </div>
       </div>
     </div>
@@ -76,24 +102,46 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
 const Form = ({ setForm }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [items, setItems] = useState([]);
+  //Bill To
+  const [toStreet, setToStreet] = useState('');
+  const [toCity, setToCity] = useState('');
+  const [toCountry, setCountry] = useState('');
+  const [toPostcode, setToPostcode] = useState('');
 
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
-  //TODO: Work on how to add item list
   return (
     <div className="md:w-element flex flex-col justify-between max-h-screen">
       <div className="mx-8 mt-8 overflow-y-scroll">
         <div className="text-3xl font-bold">Create Invoice</div>
         <section className="mt-6">
           <div className="text-sm text-all-bp font-bold">Bill From</div>
-          <FullEntryField inputClass={inputClass} title="Street Address" />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Street Address"
+            value={toStreet}
+            setValue={setToStreet}
+            name="tostreetAddress"
+          />
           <HalfEntryFields
             inputClass={inputClass}
             titleOne="City"
+            valueOne={toCity}
+            setValueOne={setToCity}
+            nameOne="toCity"
             titleTwo="Post Code"
+            valueTwo={toPostcode}
+            setValueTwo={setToPostcode}
+            nameTwo={toPostcode}
           />
-          <FullEntryField inputClass={inputClass} title="Country" />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Country"
+            value={toCountry}
+            setValue={setCountry}
+            name="tocountry"
+          />
         </section>
 
         <section className="mt-6">
