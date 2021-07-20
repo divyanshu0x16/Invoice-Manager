@@ -163,6 +163,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
   const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    console.log(invoice);
     if (!isLoaded && Object.keys(invoice).length !== 0) {
       setLoaded(true);
       setItems(invoice.items);
@@ -181,7 +182,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
       setDescription(invoice.client.description);
       setLoaded(true);
     }
-  }, [invoice]);
+  }, [invoice]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
@@ -229,6 +230,10 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
         date: toDate,
       },
     };
+
+    invoiceService
+      .modifyInvoice(token, invoice)
+      .then((data) => setInvoice(data));
   };
 
   return (
@@ -307,7 +312,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
               name="clientCountry"
             />
             <div className="grid grid-cols-2 mt-4 text-xs">
-              <div className>
+              <div>
                 <div className="text-xs">Invoice Date</div>
                 <div className="mr-6 pt-3 ml-0.5">
                   <DatePicker
