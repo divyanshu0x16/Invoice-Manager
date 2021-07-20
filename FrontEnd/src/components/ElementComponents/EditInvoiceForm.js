@@ -217,7 +217,6 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
 
     const invoice = {
       date: startDate,
-      type: 'pending',
       items,
       to: {
         address: toStreet,
@@ -410,7 +409,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
               setDescription(invoice.client.description);
               setId(invoice.id);
               setDaysTill(invoice.client.terms);
-              setLoaded(true);
+              setLoaded(false);
               setStartDate(new Date(invoice.date));
               setError(false);
               setForm(
