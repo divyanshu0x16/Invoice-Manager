@@ -160,168 +160,177 @@ const Form = ({ setForm }) => {
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  };
+
   console.log(items);
   return (
     <div className="md:w-element flex flex-col justify-between max-h-screen">
-      <div className="mx-8 mt-8 overflow-y-scroll">
-        <div className="text-3xl font-bold">Create Invoice</div>
-        <section className="mt-6">
-          <div className="text-sm text-all-bp font-bold">Bill From</div>
-          <FullEntryField
-            inputClass={inputClass}
-            title="Street Address"
-            value={toStreet}
-            setValue={setToStreet}
-            name="tostreetAddress"
-          />
-          <HalfEntryFields
-            inputClass={inputClass}
-            titleOne="City"
-            valueOne={toCity}
-            setValueOne={setToCity}
-            nameOne="toCity"
-            titleTwo="Post Code"
-            valueTwo={toPostcode}
-            setValueTwo={setToPostcode}
-            nameTwo={toPostcode}
-          />
-          <FullEntryField
-            inputClass={inputClass}
-            title="Country"
-            value={toCountry}
-            setValue={setCountry}
-            name="tocountry"
-          />
-        </section>
+      <form className="mx-8 mt-8 overflow-y-scroll" onSubmit={handleSubmit}>
+        <div>
+          <div className="text-3xl font-bold">Create Invoice</div>
+          <section className="mt-6">
+            <div className="text-sm text-all-bp font-bold">Bill From</div>
+            <FullEntryField
+              inputClass={inputClass}
+              title="Street Address"
+              value={toStreet}
+              setValue={setToStreet}
+              name="tostreetAddress"
+            />
+            <HalfEntryFields
+              inputClass={inputClass}
+              titleOne="City"
+              valueOne={toCity}
+              setValueOne={setToCity}
+              nameOne="toCity"
+              titleTwo="Post Code"
+              valueTwo={toPostcode}
+              setValueTwo={setToPostcode}
+              nameTwo={toPostcode}
+            />
+            <FullEntryField
+              inputClass={inputClass}
+              title="Country"
+              value={toCountry}
+              setValue={setCountry}
+              name="tocountry"
+            />
+          </section>
 
-        <section className="mt-6">
-          <div className="text-sm text-all-bp font-bold">Bill To</div>
-          <FullEntryField
-            inputClass={inputClass}
-            title="Client's Name"
-            value={clientName}
-            setValue={setClientName}
-            name="clientName"
-          />
-          <FullEntryField
-            inputClass={inputClass}
-            title="Client's Email"
-            value={clientMail}
-            setValue={setClientMail}
-            name="clientMail"
-          />
-          <FullEntryField
-            inputClass={inputClass}
-            title="Street Address"
-            value={clientStreet}
-            setValue={setClientStreet}
-            name="clientStreet"
-          />
-          <HalfEntryFields
-            inputClass={inputClass}
-            titleOne="City"
-            valueOne={clientCity}
-            setValueOne={setClientCity}
-            nameOne="clientCity"
-            titleTwo="Post Code"
-            valueTwo={clientPostcode}
-            setValueTwo={setClientPostcode}
-            nameTwo="clientPostcode"
-          />
-          <FullEntryField
-            inputClass={inputClass}
-            title="Country"
-            value={clientCountry}
-            setValue={setClientCountry}
-            name="clientCountry"
-          />
-          <div className="grid grid-cols-2 mt-4 text-xs">
-            <div className>
-              <div className="text-xs">Invoice Date</div>
-              <div className="mr-6 pt-3">
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  dateFormat="dd/MM/yyyy"
-                  className="w-full h-10 text-xs font-bold transition-colors duration-300 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none"
-                />
+          <section className="mt-6">
+            <div className="text-sm text-all-bp font-bold">Bill To</div>
+            <FullEntryField
+              inputClass={inputClass}
+              title="Client's Name"
+              value={clientName}
+              setValue={setClientName}
+              name="clientName"
+            />
+            <FullEntryField
+              inputClass={inputClass}
+              title="Client's Email"
+              value={clientMail}
+              setValue={setClientMail}
+              name="clientMail"
+            />
+            <FullEntryField
+              inputClass={inputClass}
+              title="Street Address"
+              value={clientStreet}
+              setValue={setClientStreet}
+              name="clientStreet"
+            />
+            <HalfEntryFields
+              inputClass={inputClass}
+              titleOne="City"
+              valueOne={clientCity}
+              setValueOne={setClientCity}
+              nameOne="clientCity"
+              titleTwo="Post Code"
+              valueTwo={clientPostcode}
+              setValueTwo={setClientPostcode}
+              nameTwo="clientPostcode"
+            />
+            <FullEntryField
+              inputClass={inputClass}
+              title="Country"
+              value={clientCountry}
+              setValue={setClientCountry}
+              name="clientCountry"
+            />
+            <div className="grid grid-cols-2 mt-4 text-xs">
+              <div className>
+                <div className="text-xs">Invoice Date</div>
+                <div className="mr-6 pt-3">
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    className="w-full h-10 text-xs font-bold transition-colors duration-300 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="text-xs">Total Days Till Payment</div>
+                <div className="mt-3 mr-10 text-xs">
+                  <input
+                    className={inputClass}
+                    type="number"
+                    value={daysTill}
+                    name="daysTill"
+                    onChange={({ target }) => setDaysTill(target.value)}
+                  />
+                </div>
               </div>
             </div>
-            <div>
-              <div className="text-xs">Total Days Till Payment</div>
-              <div className="mt-3 mr-10 text-xs">
-                <input
-                  className={inputClass}
-                  type="number"
-                  value={daysTill}
-                  name="daysTill"
-                  onChange={({ target }) => setDaysTill(target.value)}
+            <FullEntryField
+              inputClass={inputClass}
+              title="Description"
+              value={description}
+              setValue={setDescription}
+              name="description"
+            />
+          </section>
+
+          <section>
+            <div className="mt-8 font-bold text-2xl">Item List</div>
+            {items.map((item, index) => {
+              return (
+                <ItemForm
+                  inputClass={inputClass}
+                  key={index}
+                  items={items}
+                  index={index}
+                  setItems={setItems}
                 />
+              );
+            })}
+            <div className="mt-6 mb-4 mr-10 ml-4">
+              <div
+                onClick={() => {
+                  setItems(items.concat({}));
+                }}
+                className="shadow-lg text-center cursor-pointer self-center bg-item-lightbg font-bold text-xs dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+              >
+                + Add New Item
               </div>
             </div>
-          </div>
-          <FullEntryField
-            inputClass={inputClass}
-            title="Description"
-            value={description}
-            setValue={setDescription}
-            name="description"
-          />
-        </section>
-
-        <section>
-          <div className="mt-8 font-bold text-2xl">Item List</div>
-          {items.map((item, index) => {
-            return (
-              <ItemForm
-                inputClass={inputClass}
-                key={index}
-                items={items}
-                index={index}
-                setItems={setItems}
-              />
-            );
-          })}
-          <div className="mt-6 mb-4 mr-10 ml-4">
-            <div
-              onClick={() => {
-                setItems(items.concat({}));
-              }}
-              className="shadow-lg text-center cursor-pointer self-center bg-item-lightbg font-bold text-xs dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
-            >
-              + Add New Item
-            </div>
-          </div>
-        </section>
-      </div>
-      <div className="sticky mx-8 flex justify-between pb-6 mt-6">
-        <div
-          onClick={() => {
-            setToCity('');
-            setToStreet('');
-            setToPostcode('');
-            setCountry('');
-            setClientName('');
-            setClientMail('');
-            setClientStreet('');
-            setClientCity('');
-            setClientCountry('');
-            setDaysTill(0);
-            setDescription('');
-            setClientPostcode('');
-            setItems([]);
-            setForm(
-              'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
-            );
-          }}
-          className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
-        >
-          Discard
+          </section>
         </div>
-        <div className="mr-14 shadow-lg cursor-pointer self-center transform hover:scale-105 duration-300 bg-all-bp text-white font-bold rounded-3xl">
-          <div className="py-4 px-4">Save</div>
+        <div className="sticky mr-8 flex justify-between pb-6 mt-6">
+          <div
+            onClick={() => {
+              setToCity('');
+              setToStreet('');
+              setToPostcode('');
+              setCountry('');
+              setClientName('');
+              setClientMail('');
+              setClientStreet('');
+              setClientCity('');
+              setClientCountry('');
+              setDaysTill(0);
+              setDescription('');
+              setClientPostcode('');
+              setItems([]);
+              setForm(
+                'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
+              );
+            }}
+            className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+          >
+            Discard
+          </div>
+          <button
+            type="submit"
+            className="mr-2 shadow-lg cursor-pointer self-center transform hover:scale-105 duration-300 bg-all-bp text-white font-bold rounded-3xl"
+          >
+            <div className="py-4 px-4">Save</div>
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
