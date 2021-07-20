@@ -163,7 +163,7 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     toDate.setDate(toDate.getDate() + parseInt(daysTill));
 
@@ -207,7 +207,7 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
       },
     };
 
-    await invoiceService.createInvoice(token, invoice).then((data) => {
+    invoiceService.createInvoice(token, invoice).then((data) => {
       setInvoices(invoices.concat(data));
       setToCity('');
       setToStreet('');
@@ -305,7 +305,7 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
               name="clientCountry"
             />
             <div className="grid grid-cols-2 mt-4 text-xs">
-              <div className>
+              <div>
                 <div className="text-xs">Invoice Date</div>
                 <div className="mr-6 pt-3 ml-0.5">
                   <DatePicker

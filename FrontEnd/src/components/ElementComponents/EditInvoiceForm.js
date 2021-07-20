@@ -231,9 +231,8 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
       },
     };
 
-    invoiceService
-      .modifyInvoice(token, invoice)
-      .then((data) => setInvoice(data));
+    const data = await invoiceService.modifyInvoice(token, invoice);
+    setInvoice(data);
   };
 
   return (
