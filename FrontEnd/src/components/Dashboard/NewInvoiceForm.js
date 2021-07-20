@@ -141,6 +141,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
 
 const Form = ({ setForm, token, setInvoices, invoices }) => {
   const [startDate, setStartDate] = useState(new Date());
+  const [toDate, setToDate] = useState(new Date());
   const [items, setItems] = useState([]);
   //Bill To
   const [toStreet, setToStreet] = useState('');
@@ -164,6 +165,7 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    toDate.setDate(toDate.getDate() + parseInt(daysTill));
 
     if (items.length === 0) {
       setError(true);
@@ -201,7 +203,7 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
         country: clientCountry,
         postcode: clientPostcode,
         description,
-        date: startDate.setDate(startDate.getDate() + daysTill),
+        date: toDate,
       },
     };
 
@@ -309,7 +311,10 @@ const Form = ({ setForm, token, setInvoices, invoices }) => {
                 <div className="mr-6 pt-3">
                   <DatePicker
                     selected={startDate}
-                    onChange={(date) => setStartDate(date)}
+                    onChange={(date) => {
+                      setStartDate(date);
+                      setToDate(date);
+                    }}
                     dateFormat="dd/MM/yyyy"
                     className="w-full h-10 text-xs font-bold transition-colors duration-300 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none"
                   />
