@@ -249,7 +249,14 @@ const Element = () => {
               >
                 Delete
               </div>
-              <div className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300">
+              <div
+                onClick={() => {
+                  setForm(
+                    'z-10 max-w-full absolute inset-y-0 w-screen transform transition duration-300 ease-in-out'
+                  );
+                }}
+                className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+              >
                 Edit
               </div>
             </div>
