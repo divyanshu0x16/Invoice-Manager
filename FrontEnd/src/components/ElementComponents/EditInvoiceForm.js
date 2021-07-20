@@ -5,7 +5,7 @@ import invoiceService from '../../services/invoices';
 
 const FullEntryField = ({ inputClass, title, value, setValue, name }) => {
   return (
-    <div className="mt-4">
+    <div className="mt-4 pl-0.5">
       <div className="text-xs">{title}</div>
       <div className="mt-3 mr-10">
         <input
@@ -82,7 +82,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
 
   return (
     <div>
-      <div className="mt-4">
+      <div className="mt-4 ml-0.5">
         <div className="text-xs">Item Name</div>
         <div className="mt-3 mr-10">
           <input
@@ -307,7 +307,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
             <div className="grid grid-cols-2 mt-4 text-xs">
               <div className>
                 <div className="text-xs">Invoice Date</div>
-                <div className="mr-6 pt-3">
+                <div className="mr-6 pt-3 ml-0.5">
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => {
