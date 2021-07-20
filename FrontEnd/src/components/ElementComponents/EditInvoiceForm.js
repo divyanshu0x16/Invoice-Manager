@@ -159,11 +159,11 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
   const [daysTill, setDaysTill] = useState(0);
   //Error
   const [error, setError] = useState(false);
+  const [id, setId] = useState('');
 
   const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    console.log(invoice);
     if (!isLoaded && Object.keys(invoice).length !== 0) {
       setLoaded(true);
       setItems(invoice.items);
@@ -180,6 +180,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
       setClientPostcode(invoice.client.postcode);
       setClientCountry(invoice.client.country);
       setDescription(invoice.client.description);
+      setId(invoice.id);
       setLoaded(true);
     }
   }, [invoice]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -229,6 +230,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
         description,
         date: toDate,
       },
+      id,
     };
 
     const data = await invoiceService.modifyInvoice(token, invoice);
