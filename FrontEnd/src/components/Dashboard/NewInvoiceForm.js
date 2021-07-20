@@ -107,6 +107,15 @@ const Form = ({ setForm }) => {
   const [toCity, setToCity] = useState('');
   const [toCountry, setCountry] = useState('');
   const [toPostcode, setToPostcode] = useState('');
+  //Client
+  const [clientName, setClientName] = useState('');
+  const [clientMail, setClientMail] = useState('');
+  const [clientStreet, setClientStreet] = useState('');
+  const [clientCity, setClientCity] = useState('');
+  const [clientPostcode, setClientPostcode] = useState('');
+  const [clientCountry, setClientCountry] = useState('');
+  const [description, setDescription] = useState('');
+  const [daysTill, setDaysTill] = useState(0);
 
   const inputClass =
     'w-full h-10 text-xs font-bold transition-colors duration-300 pl-2 rounded-md dark:bg-item-darkbg dark:border-all-darkbg border-gray-300 border-2 focus:border-all-bp dark:focus:border-all-bp focus:outline-none';
@@ -146,15 +155,45 @@ const Form = ({ setForm }) => {
 
         <section className="mt-6">
           <div className="text-sm text-all-bp font-bold">Bill To</div>
-          <FullEntryField inputClass={inputClass} title="Client's Name" />
-          <FullEntryField inputClass={inputClass} title="Client's Email" />
-          <FullEntryField inputClass={inputClass} title="Street Address" />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Client's Name"
+            value={clientName}
+            setValue={setClientName}
+            name="clientName"
+          />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Client's Email"
+            value={clientMail}
+            setValue={setClientMail}
+            name="clientMail"
+          />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Street Address"
+            value={clientStreet}
+            setValue={setClientStreet}
+            name="clientStreet"
+          />
           <HalfEntryFields
             inputClass={inputClass}
             titleOne="City"
+            valueOne={clientCity}
+            setValueOne={setClientCity}
+            nameOne="clientCity"
             titleTwo="Post Code"
+            valueTwo={clientPostcode}
+            setValueTwo={setClientPostcode}
+            nameTwo="clientPostcode"
           />
-          <FullEntryField inputClass={inputClass} title="Country" />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Country"
+            value={clientCountry}
+            setValue={setClientCountry}
+            name="clientCountry"
+          />
           <div className="grid grid-cols-2 mt-4 text-xs">
             <div className>
               <div className="text-xs">Invoice Date</div>
@@ -170,11 +209,23 @@ const Form = ({ setForm }) => {
             <div>
               <div className="text-xs">Total Days Till Payment</div>
               <div className="mt-3 mr-10 text-xs">
-                <input className={inputClass} type="number" />
+                <input
+                  className={inputClass}
+                  type="number"
+                  value={daysTill}
+                  name="daysTill"
+                  onChange={({ target }) => setDaysTill(target.value)}
+                />
               </div>
             </div>
           </div>
-          <FullEntryField inputClass={inputClass} title="Description" />
+          <FullEntryField
+            inputClass={inputClass}
+            title="Description"
+            value={description}
+            setValue={setDescription}
+            name="description"
+          />
         </section>
 
         <section>
@@ -204,11 +255,23 @@ const Form = ({ setForm }) => {
       </div>
       <div className="sticky mx-8 flex justify-between pb-6 mt-6">
         <div
-          onClick={() =>
+          onClick={() => {
+            setToCity('');
+            setToStreet('');
+            setToPostcode('');
+            setCountry('');
+            setClientName('');
+            setClientMail('');
+            setClientStreet('');
+            setClientCity('');
+            setClientCountry('');
+            setDaysTill(0);
+            setDescription('');
+            setClientPostcode('');
             setForm(
               'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
-            )
-          }
+            );
+          }}
           className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
         >
           Discard

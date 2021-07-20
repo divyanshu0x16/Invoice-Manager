@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <NewInvoiceForm form={form} setForm={setForm}/>
+      <NewInvoiceForm form={form} setForm={setForm} />
       <div className="mx-6 md:mx-auto min-h-screen">
         <Header
           invoices={allInvoices.current}
