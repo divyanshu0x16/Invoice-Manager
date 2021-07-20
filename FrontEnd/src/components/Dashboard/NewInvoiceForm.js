@@ -73,10 +73,11 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
 
-  const handleChange = () => {
+  const handleChange = (name, quantity, price) => {
     items[index].name = name;
     items[index].quantity = quantity;
     items[index].price = price;
+    console.log(items);
     setItems(items);
   };
 
@@ -92,7 +93,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
             name="name"
             onChange={({ target }) => {
               setName(target.value);
-              handleChange();
+              handleChange(target.value, quantity, price);
             }}
           />
         </div>
@@ -106,7 +107,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
               value={quantity}
               onChange={({ target }) => {
                 setQuantity(target.value);
-                handleChange();
+                handleChange(name, target.value, price);
               }}
             />
           </div>
@@ -119,7 +120,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
               value={price}
               onChange={({ target }) => {
                 setPrice(target.value);
-                handleChange();
+                handleChange(name, quantity, target.value);
               }}
             />
           </div>
