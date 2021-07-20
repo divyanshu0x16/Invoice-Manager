@@ -167,10 +167,30 @@ const Form = ({ setForm }) => {
 
     if (items.length === 0) {
       setError(true);
+      return;
     }
+
+    let flag = 0;
+    for (let index = 0; index < items.length; index++) {
+      const element = items[index];
+      if (Object.keys(element).length === 0) {
+        flag = 1;
+        break;
+      }
+    }
+    if (flag === 1) {
+      setError(true);
+      return;
+    }
+    
+    const invoice = {
+      date: startDate,
+      type: 'pending',
+      items,
+    };
+    console.log(invoice);
   };
 
-  console.log(items);
   return (
     <div className="md:w-element flex flex-col justify-between max-h-screen">
       <form className="mx-8 mt-8 overflow-y-scroll" onSubmit={handleSubmit}>
@@ -327,6 +347,7 @@ const Form = ({ setForm }) => {
               setDescription('');
               setClientPostcode('');
               setItems([]);
+              setError(false);
               setForm(
                 'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
               );
