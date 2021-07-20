@@ -15,7 +15,7 @@ const invoiceSchema = mongoose.Schema({
     postcode: Number,
     country: String,
     date: Date,
-    terms: String,
+    terms: Number,
     description: String,
   },
   items: [{ name: String, quantity: Number, price: Number }],
