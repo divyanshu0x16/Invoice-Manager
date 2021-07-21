@@ -4,7 +4,7 @@
   "description": "Invoice Manager built using MERN stack",
   "main": "index.js",
   "scripts": {
-    "build:ui": "rm -rf build && cd ../client/ && npm run build-css && npm run build && cp -r build ../server",
+    "build:ui": "rm -rf build && cd ../client/ && npm run build && cp -r build ../server",
     "deploy": "git push heroku main",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail",
