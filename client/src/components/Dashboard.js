@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   jwt.verify(user.token, process.env.REACT_APP_SECRET, (err) => {
     if (err) {
-      localStorage.clear();
+      localStorage.removeItem('userDetails');
     }
   });
 
