@@ -1,7 +1,39 @@
 import React, { useState } from 'react';
-import signupService from '../services/signup';
 import { useHistory, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
+import signupService from '../services/signup';
+import loginService from '../services/login';
+import invoiceService from '../services/invoices';
+
+var tmpDate = new Date();
+tmpDate.setDate(tmpDate.getDate() + 10);
+
+const defaultInvoice = {
+  date: new Date(),
+  type: 'pending',
+  items: [
+    { name: 'Eggs', quantity: 10, price: 50 },
+    { name: 'Books', quantity: 10, price: 150 },
+  ],
+  to: {
+    address: 'XYZ',
+    city: 'Delhi',
+    country: 'India',
+    postcode: '123456',
+  },
+  client: {
+    name: 'Client',
+    email: 'client@email.com',
+    address: 'ABC Street',
+    city: 'Mumbai',
+    country: 'India',
+    postcode: '987654',
+    description: 'This is a demo invoice',
+    terms: 10,
+    date: tmpDate,
+  },
+};
 
 export const FormElement = ({ name, value, setValue, error }) => {
   return (
@@ -48,6 +80,12 @@ const Signup = () => {
         name,
         password,
       });
+      //Login User
+      const data = await loginService.login({ username, password });
+      localStorage.setItem('userDetails', JSON.stringify(data));
+      //Create Default Invoice
+      await invoiceService.createInvoice(data.token, defaultInvoice);
+      //Redirect
       setSuccess('User created. Redirecting...');
       setTimeout(() => {
         history.push('/login');
