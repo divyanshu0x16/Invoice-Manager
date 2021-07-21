@@ -3,9 +3,31 @@ import React, { Fragment, useState, useImperativeHandle } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useHistory } from 'react-router';
 
+const Logout = ({ setOpen }) => {
+  const history = useHistory();
+
+  if (localStorage.getItem('userDetails') === null) return null;
+
+  return (
+    <div>
+      <div className="cursor-pointer flex flex-row place-content-center">
+        <div
+          onClick={() => {
+            localStorage.removeItem('userDetails');
+            history.push('/');
+            setOpen(false);
+          }}
+          className="mt-2 text-transparent bg-clip-text bg-gradient-to-br font-semibold text-2xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
+        >
+          Log Out
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Modal = React.forwardRef((_, ref) => {
   const [open, setOpen] = useState(false);
-  const history = useHistory();
 
   const toggleModal = () => {
     setOpen(!open);
@@ -74,18 +96,7 @@ const Modal = React.forwardRef((_, ref) => {
                   </div>
                 </div>
               </a>
-              <div className="cursor-pointer flex flex-row place-content-center">
-                <div
-                  onClick={() => {
-                    localStorage.removeItem('userDetails');
-                    history.push('/');
-                    setOpen(false);
-                  }}
-                  className="mt-2 text-transparent bg-clip-text bg-gradient-to-br font-semibold text-2xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
-                >
-                  Log Out
-                </div>
-              </div>
+              <Logout setOpen={setOpen} />
             </div>
           </Transition.Child>
         </div>
