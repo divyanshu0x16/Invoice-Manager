@@ -1,0 +1,40 @@
+{
+  "name": "invoice-manager",
+  "version": "1.0.0",
+  "description": "Invoice Manager built using MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "build:ui": "rm -rf build && cd ../client/ && npm run build && cp -r build ../server",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "logs:prod": "heroku logs --tail",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "cross-env NODE_ENV=test nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanshu0x16/Invoice-Tracker.git"
+  },
+  "author": "divyanshu0x16",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divyanshu0x16/Invoice-Tracker/issues"
+  },
+  "homepage": "https://github.com/divyanshu0x16/Invoice-Tracker#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2",
+    "mongoose-unique-validator": "^2.0.3",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12"
+  }
+}
