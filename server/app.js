@@ -3,6 +3,7 @@ require('express-async-errors');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 const config = require('./utils/config');
 const middleware = require('./utils/middleware');
 
@@ -36,6 +37,14 @@ app.use(express.static('build'));
 app.use('/api/invoices', invoiceRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/users', usersRouter);
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build/index.html'), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
 app.use(middleware.errorHandler);
 
