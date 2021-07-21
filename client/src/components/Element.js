@@ -144,7 +144,7 @@ const Element = () => {
         .getSingleInvoice(user.token, invoiceId)
         .then((data) => setInvoice(data));
     }
-  }, [invoice]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (user === null) {
     return <Redirect to="/login" />;
