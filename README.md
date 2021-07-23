@@ -51,7 +51,5 @@ An Invoice Manager built using the MERN stack.
 
 ### Issues
 
-- Scroll is not disabled on body when form is open
-
 - Editing date is buggy
 
