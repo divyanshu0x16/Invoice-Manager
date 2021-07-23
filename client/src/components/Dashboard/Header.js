@@ -34,10 +34,10 @@ const Header = ({ invoices, applyFilter, setForm, setBodyClass }) => {
           }}
           className="cursor-pointer bg-all-bp text-white my-auto md:px-3 rounded-full font-bold transform hover:scale-105 duration-300"
         >
-          <div className="py-2 flex flex-row">
+          <div className="py-2 flex flex-row justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 pr-1 pb-0.5"
+              className="hidden md:block h-6 w-6 pr-1 pb-0.5"
               viewBox="0 0 20 20"
               fill="white"
             >
