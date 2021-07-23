@@ -39,7 +39,7 @@ const MarkPaid = ({ invoice, token, setInvoice }) => {
       <div className="pr-8">
         <div
           onClick={() => markAsPaid(invoice, token)}
-          className="shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300 md:text-xs"
+          className="text-xs shadow-lg cursor-pointer self-center bg-all-bp font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300 md:text-xs"
         >
           Mark As Paid
         </div>
@@ -258,7 +258,7 @@ const Element = () => {
               <div></div>
               <div
                 onClick={() => deleteInvoice()}
-                className="shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
+                className="text-xs shadow-lg cursor-pointer self-center bg-red-700 font-bold px-4 py-4 rounded-3xl text-white transform hover:scale-105 duration-300"
               >
                 Delete
               </div>
@@ -271,7 +271,7 @@ const Element = () => {
                     'z-10 max-w-full absolute inset-y-0 w-screen transform transition duration-300 ease-in-out'
                   );
                 }}
-                className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+                className="text-xs shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
               >
                 Edit
               </div>
