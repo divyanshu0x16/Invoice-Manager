@@ -388,7 +388,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
             </section>
           ) : null}
         </div>
-        <div className="transition-colors duration-300 sticky bottom-0 mr-8 flex justify-between pb-6 mt-6 bg-all-lightbg dark:bg-all-darkbg">
+        <div className="sticky mr-8 flex justify-between pb-6 mt-6">
           <div
             onClick={() => {
               setLoaded(true);
@@ -416,13 +416,13 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
                 'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
               );
             }}
-            className="ml-1 mt-4 shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+            className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
           >
             Discard
           </div>
           <button
             type="submit"
-            className="mt-4 mr-2 shadow-lg cursor-pointer self-center transform hover:scale-105 duration-300 bg-all-bp text-white font-bold rounded-3xl"
+            className="mr-2 shadow-lg cursor-pointer self-center transform hover:scale-105 duration-300 bg-all-bp text-white font-bold rounded-3xl"
           >
             <div className="py-4 px-4">Save</div>
           </button>
