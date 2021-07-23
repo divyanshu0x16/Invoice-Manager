@@ -247,7 +247,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
 
   return (
     <div className="md:w-element flex flex-col justify-between max-h-screen">
-      <form className="mx-8 mt-8 overflow-y-scroll" onSubmit={handleSubmit}>
+      <form className="mx-8 mt-8 overflow-y-auto" onSubmit={handleSubmit}>
         <div>
           <div className="text-3xl font-bold">Edit Invoice</div>
           <section className="mt-6">
