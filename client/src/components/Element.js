@@ -54,6 +54,7 @@ const ElementHeader = ({
   user,
   setInvoice,
   setForm,
+  setBodyClass,
 }) => {
   if (Object.keys(invoice).length === 0 && invoice.constructor === Object) {
     return null;
@@ -71,6 +72,9 @@ const ElementHeader = ({
           <div className="hidden md:block flex-grow"></div>
           <div
             onClick={() => {
+              setBodyClass(
+                'md:mx-auto flex flex-col min-h-screen md:min-h-full overflow-hidden max-h-screen'
+              );
               setForm(
                 'z-10 max-w-full absolute inset-y-0 w-screen transform transition duration-300 ease-in-out'
               );
@@ -108,6 +112,9 @@ const ElementHeader = ({
         <div className="hidden md:block flex-grow"></div>
         <div
           onClick={() => {
+            setBodyClass(
+              'md:mx-auto flex flex-col min-h-screen md:min-h-full overflow-hidden max-h-screen'
+            );
             setForm(
               'z-10 max-w-full absolute inset-y-0 w-screen transform transition duration-300 ease-in-out'
             );
@@ -137,6 +144,9 @@ const Element = () => {
   );
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem('userDetails'));
+  const [bodyClass, setBodyClass] = useState(
+    'md:mx-auto flex flex-col min-h-screen md:min-h-full'
+  );
 
   useEffect(() => {
     if (user !== null) {
@@ -161,17 +171,19 @@ const Element = () => {
       .deleteInvoice(user.token, invoiceId)
       .then(() => history.push('/'));
   };
+
   return (
     <>
       <EditInvoiceForm
         form={form}
         setForm={setForm}
+        setBodyClass={setBodyClass}
         token={user.token}
         setInvoice={setInvoice}
         invoice={invoice}
       />
       <motion.div
-        className="md:mx-auto flex flex-col min-h-screen md:min-h-full"
+        className={bodyClass}
         initial={{ scale: 1.0, opacity: 0.5 }}
         animate={{ scale: 1.0, opacity: 1 }}
         transition={{ duration: 1 }}
@@ -195,6 +207,7 @@ const Element = () => {
             user={user}
             setInvoice={setInvoice}
             setForm={setForm}
+            setBodyClass={setBodyClass}
           />
           <div className="pt-4">
             <div className="transform-colors duration-300 bg-white dark:bg-navbar-darkbg rounded-lg px-8 py-4 shadow-lg">
@@ -251,6 +264,9 @@ const Element = () => {
               </div>
               <div
                 onClick={() => {
+                  setBodyClass(
+                    'md:mx-auto flex flex-col min-h-screen md:min-h-full overflow-hidden max-h-screen'
+                  );
                   setForm(
                     'z-10 max-w-full absolute inset-y-0 w-screen transform transition duration-300 ease-in-out'
                   );

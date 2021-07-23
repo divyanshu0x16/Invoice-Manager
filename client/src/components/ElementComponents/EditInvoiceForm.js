@@ -139,7 +139,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
   );
 };
 
-const Form = ({ setForm, token, setInvoice, invoice }) => {
+const Form = ({ setForm, token, setInvoice, invoice, setBodyClass }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const [items, setItems] = useState([]);
@@ -193,6 +193,7 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setBodyClass('md:mx-auto flex flex-col min-h-screen md:min-h-full');
     //I have no idea why this works
     toDate.setDate(startDate.getDate() + parseInt(daysTill));
     setToDate(toDate);
@@ -412,11 +413,14 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
               setLoaded(false);
               setStartDate(new Date(invoice.date));
               setError(false);
+              setBodyClass(
+                'md:mx-auto flex flex-col min-h-screen md:min-h-full'
+              );
               setForm(
                 'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
               );
             }}
-            className="shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
+            className="ml-1 shadow-lg cursor-pointer self-center bg-item-lightbg font-bold dark:bg-item-darkbg px-4 py-4 rounded-3xl transform hover:scale-105 duration-300"
           >
             Discard
           </div>
@@ -432,7 +436,14 @@ const Form = ({ setForm, token, setInvoice, invoice }) => {
   );
 };
 
-const EditInvoiceForm = ({ form, setForm, token, setInvoice, invoice }) => {
+const EditInvoiceForm = ({
+  form,
+  setForm,
+  token,
+  setInvoice,
+  invoice,
+  setBodyClass,
+}) => {
   return (
     <div className={form}>
       <div className="flex mt-16 md:mt-0">
@@ -441,15 +452,17 @@ const EditInvoiceForm = ({ form, setForm, token, setInvoice, invoice }) => {
             setForm={setForm}
             token={token}
             setInvoice={setInvoice}
+            setBodyClass={setBodyClass}
             invoice={invoice}
           />
         </div>
         <div
-          onClick={() =>
+          onClick={() => {
+            setBodyClass('md:mx-auto flex flex-col min-h-screen md:min-h-full');
             setForm(
               'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
-            )
-          }
+            );
+          }}
           className="hidden md:block flex-grow backdrop-filter backdrop-brightness-50"
         ></div>
       </div>
