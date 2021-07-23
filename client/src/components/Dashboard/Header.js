@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from './Filter';
 import { motion } from 'framer-motion';
 
-const Header = ({ invoices, applyFilter, setForm }) => {
+const Header = ({ invoices, applyFilter, setForm, setBodyClass }) => {
   return (
     <motion.div
       className="lg:pt-24 md:pt-16 pt-8 grid grid-cols-3"
@@ -24,11 +24,14 @@ const Header = ({ invoices, applyFilter, setForm }) => {
           <Filter onFilter={applyFilter} />
         </div>
         <div
-          onClick={() =>
+          onClick={() => {
+            setBodyClass(
+              'mx-6 md:mx-auto min-h-screen overflow-hidden max-h-screen'
+            );
             setForm(
               'z-10 max-w-full absolute inset-y-0 w-screen transform transition duration-300 ease-in-out'
-            )
-          }
+            );
+          }}
           className="cursor-pointer bg-all-bp text-white my-auto md:px-3 rounded-full font-bold transform hover:scale-105 duration-300"
         >
           <div className="py-2 flex flex-row">

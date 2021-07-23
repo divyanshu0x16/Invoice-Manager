@@ -12,6 +12,7 @@ require('dotenv').config();
 
 const Dashboard = () => {
   const [invoices, setInvoices] = useState([]);
+  const [bodyClass, setBodyClass] = useState('mx-6 md:mx-auto min-h-screen');
   const [form, setForm] = useState(
     'z-10 max-w-full absolute inset-y-0 w-screen transform -translate-x-full transition duration-300 ease-in-out'
   );
@@ -58,12 +59,14 @@ const Dashboard = () => {
         token={user.token}
         setInvoices={setInvoices}
         invoices={invoices}
+        setBodyClass={setBodyClass}
       />
-      <div className="mx-6 md:mx-auto min-h-screen">
+      <div className={bodyClass}>
         <Header
           invoices={allInvoices.current}
           applyFilter={applyFilter}
           setForm={setForm}
+          setBodyClass={setBodyClass}
         />
         <motion.div
           className="pt-8"
