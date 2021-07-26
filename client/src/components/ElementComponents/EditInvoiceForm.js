@@ -7,7 +7,7 @@ const FullEntryField = ({ inputClass, title, value, setValue, name }) => {
   return (
     <div className="mt-4 pl-0.5">
       <div className="text-xs">{title}</div>
-      <div className="mt-3 mr-10">
+      <div className="mt-1.5 mr-10">
         <input
           type="text"
           className={inputClass}
@@ -35,7 +35,7 @@ const HalfEntryFields = ({
     <div className="grid grid-cols-2 mt-4 text-xs">
       <div>
         <div className="text-xs">{titleOne}</div>
-        <div className="mt-3 mr-6">
+        <div className="mt-1.5 mr-6">
           <input
             className={inputClass}
             value={valueOne}
@@ -46,7 +46,7 @@ const HalfEntryFields = ({
       </div>
       <div>
         <div className="text-xs">{titleTwo}</div>
-        <div className="mt-3 mr-10 text-xs">
+        <div className="mt-1.5 mr-10 text-xs">
           <input
             className={inputClass}
             value={valueTwo}
@@ -84,7 +84,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
     <div>
       <div className="mt-4 ml-0.5">
         <div className="text-xs">Item Name</div>
-        <div className="mt-3 mr-10">
+        <div className="mt-1.5 mr-10">
           <input
             type="text"
             className={inputClass}
@@ -100,7 +100,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
       <div className="grid grid-cols-3 mt-4">
         <div>
           <div className="text-xs">Qty.</div>
-          <div className="mt-3 mr-10 text-xs">
+          <div className="mt-1.5 mr-10 text-xs">
             <input
               className={inputClass}
               value={quantity}
@@ -113,7 +113,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
         </div>
         <div>
           <div className="text-xs">Price</div>
-          <div className="mt-3 mr-10 text-xs">
+          <div className="mt-1.5 mr-10 text-xs">
             <input
               className={inputClass}
               value={price}
@@ -126,7 +126,7 @@ const ItemForm = ({ inputClass, index, items, setItems }) => {
         </div>
         <div>
           <div className="text-xs">Total</div>
-          <div className="mt-3 mr-10 text-sm font-bold flex justify-between">
+          <div className="mt-1.5 mr-10 text-sm font-bold flex justify-between">
             <div className="mt-3">{quantity * price}</div>
             <i
               onClick={() => setItems(deleteItem(index, items))}
@@ -324,7 +324,7 @@ const Form = ({ setForm, token, setInvoice, invoice, setBodyClass }) => {
             <div className="grid grid-cols-2 mt-4 text-xs">
               <div>
                 <div className="text-xs">Invoice Date</div>
-                <div className="mr-6 pt-3 ml-0.5">
+                <div className="mr-6 pt-1.5 ml-0.5">
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => {
@@ -338,7 +338,7 @@ const Form = ({ setForm, token, setInvoice, invoice, setBodyClass }) => {
               </div>
               <div>
                 <div className="text-xs">Total Days Till Payment</div>
-                <div className="mt-3 mr-10 text-xs">
+                <div className="mt-1.5 mr-10 text-xs">
                   <input
                     className={inputClass}
                     type="number"
