@@ -10,14 +10,14 @@ const Logout = ({ setOpen }) => {
 
   return (
     <div>
-      <div className="cursor-pointer flex flex-row place-content-center">
+      <div className="flex flex-row place-content-center">
         <div
           onClick={() => {
             localStorage.removeItem('userDetails');
             history.push('/');
             setOpen(false);
           }}
-          className="mt-2 text-transparent bg-clip-text bg-gradient-to-br font-semibold text-2xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
+          className="cursor-pointer mt-2 text-transparent bg-clip-text bg-gradient-to-br font-semibold text-3xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
         >
           Log Out
         </div>
@@ -79,7 +79,7 @@ const Modal = React.forwardRef((_, ref) => {
           >
             <div className="inline-block align-bottom rounded-lg text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <a
-                href="https://github.com/divyanshu0x16/Invoice-Tracker"
+                href="https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="outline-none focus:outline-none"
@@ -89,7 +89,25 @@ const Modal = React.forwardRef((_, ref) => {
                     <button
                       type="button"
                       onClick={() => setOpen(false)}
-                      className="py-2 px-2 border-0 border-transparent outline-none focus:outline-none text-transparent bg-clip-text bg-gradient-to-br font-semibold text-6xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
+                      className="py-2 px-2 border-0 border-transparent outline-none focus:outline-none text-transparent bg-clip-text bg-gradient-to-br font-semibold text-3xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
+                    >
+                      Design by Frontend Mentor
+                    </button>
+                  </div>
+                </div>
+              </a>
+              <a
+                href="https://github.com/divyanshu0x16/Invoice-Manager"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="outline-none focus:outline-none"
+              >
+                <div>
+                  <div className="flex flex-row place-content-center">
+                    <button
+                      type="button"
+                      onClick={() => setOpen(false)}
+                      className="py-2 px-2 border-0 border-transparent outline-none focus:outline-none text-transparent bg-clip-text bg-gradient-to-br font-semibold text-3xl from-green-400 to-blue-500 transform duration-300 hover:scale-110"
                     >
                       GitHub
                     </button>
