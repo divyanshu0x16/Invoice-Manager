@@ -33,7 +33,7 @@ An Invoice Manager built using the MERN stack.
 
 ### Links
 
-- [Live Site](https://invoice-manager-mern.herokuapp.com/)
+- [Live Site](https://invoice-manager.fly.dev/)
 
 ### Built with
 
